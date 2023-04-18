@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>stage 6</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="#"></script> <!--placeholder for your .js file>-->
+    <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+     
+        
+body {
+  background-color: #85baa1;
+  color: #4A5174;
+}
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  
+  
+  float: right;
+  width: 33.33%;
+  padding: 30px;
+}
+
+body {
+  background-color: #85baa1;
+  color: #4A5174
+}
+.allign-r{
+position: relative;
+
+min-height: 50px;
+}
+
+.allign-a{
+position: absolute;
+
+left: 50%;
+}
+
+
+
+.w3-padding32 {
+padding-top:32px!important;padding-bottom:32px!important
+}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+
+.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+
+.w3-bar-item{
+padding:8px 16px;
+float:left;
+width:auto;
+border:none;
+display:block;
+outline:0
+}
+
+.w3-bar{display:inline-block;width:auto} 
+.w3-bar{width:100%;overflow:hidden}
+
+a:link, a:visited {
+
+color: white;
+border: 2px black;
+padding: 4px 4px ;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+
+
+}
+
+
+a:hover, a:active {
+background-color: #Ceeddb;
+color: #67597a;
+}
+img {
+  max-width: 25%
+  
+}
+dl dt {
+  float: left;
+  width: 30%;
+}
+        </style>
+</head>
+<body>
+    <dt></dt>
+     <script>
+    
+    let capture;
+
+    function setup() {
+      createCanvas(640, 480);
+      capture = createCapture(VIDEO);
+      capture.size(320, 240);
+      capture.hide();
+    }
+
+    function draw() {
+      background(255);
+      scale(2);
+      image(capture, 0, 0, 320, 240);
+      
+      if (key === "1") { 
+        filter(INVERT);
+      } else if (key === "2") { 
+        filter(THRESHOLD);
+      } else if (key === "3") { 
+        filter(GRAY);
+      } else if (key === "4") { 
+        filter(DILATE);
+      } else if (key === "5") { 
+        filter(ERODE);
+      } else if (key === "6") {
+        filter(POSTERIZE, 2);
+      } else if (key === "7") {
+        filter(POSTERIZE, 4);
+      } else if (key === "8") { 
+        filter(BLUR, 3);    
+      }  else if (key === "9") { 
+        filter(BLUR, 12);
+      } else if (key === "0"){
+        for (let i = 0; i <  8 ; i ++) {
+          for (let m = 0; m < 8  ; m ++)
+          image(capture, i*40, m*30, 40, 30);
+        }
+      }
+      
+    } 
+    </script>
+    </dt>
+    <!-- !PAGE CONTENT! -->
+	<div class="w3-main w3-content w3-padding" style="max-		width:1200px;margin-top:20px">
+    
+  	</div>
+    
+      
+  <!-- Pagination -->
+  	
+  <div class="allign-r w3-padding-32">
+    	<div class="allign-a w3-bar">
+        <a href="index.html" class="w3-bar-item w3-button w3-hover-black">All done!</a>
+     	 <!-- <a href="stage6.html" class="w3-bar-item w3-button w3-hover-black">»</a> -->
+    	</div>
+ </div>
+ <div class="box" style="background-color:#Ceeddb;">
+        <p>Press Buttons 0-9 to alter the camera settings! </p>
+        <p>The final stage! This is humanity now in all its complex thought and introspection. 
+        This is where we are now, a development of language and awareness to ponder existential 
+        questions and place ourselves in the universe. 
+        What could come next? </p>
+    </div>
+
+ 
+
+    
+</body>
+</html>

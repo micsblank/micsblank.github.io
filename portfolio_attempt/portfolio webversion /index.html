@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MG2 p3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+/* header */
+.header {
+  padding: 80px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+
+body {
+  background-color: #85baa1;
+  color: #4A5174;
+}
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  
+  width: 30px%;
+  padding: 30px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px  #ccc;
+  padding: 2px;
+  background-color:  #6e8894;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: lavender;
+  float: centre;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 30px;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: MintCream;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #6e8894;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  background-color: lavender;
+  padding: 20px 20px;
+  border: 1px  #ccc;
+  border-top: none;
+}
+
+a:link, a:visited {
+  background-color:  #6e8894; 
+  color: white;
+  border: 2px black;
+  padding: 40px 40px ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #Ceeddb;
+  color: #67597a;
+}
+</style>
+</head>
+
+
+<body>
+
+<h2 style="color: white">Stages</h2>
+<p style="color: white">Click on the buttons inside the tabbed menu:</p>
+
+<div class="box" style="background-color:#Ceeddb;">
+  <a href="Astart.html">Intro</a>
+</div>
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Stage 0')"> 0</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage 1')"> 1</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage 2')"> 2</button>
+    <button class="tablinks" onclick="openCity(event, 'Stage 3')"> 3</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage 4')"> 4</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage 5')"> 5</button>
+  <button class="tablinks" onclick="openCity(event, 'Stage 6')"> 6</button>
+</div>
+
+<div id="Stage 0" class="tabcontent">
+  <a href="animate0/fred0.html">PLAY</a>
+</div>
+
+<div id="Stage 1" class="tabcontent">
+  
+  <a href="animate1/fred1.html">PLAY</a>
+</div>
+
+<div id="Stage 2" class="tabcontent">
+
+  <a href="animate2/fred2.html">PLAY</a>
+</div>
+
+<div id="Stage 3" class="tabcontent">
+
+  <a href="animate3/fred3.html">PLAY</a>
+</div>
+
+<div id="Stage 4" class="tabcontent">
+
+  <a href="animate4/fred4.html">PLAY</a>
+</div>
+
+<div id="Stage 5" class="tabcontent">
+
+  <a href="animate5/fred5.html">PLAY</a>
+</div>
+
+<div id="Stage 6" class="tabcontent">
+
+  <a href="animate6/fred6.html">PLAY</a>
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+   
+</body>
+</html> 
