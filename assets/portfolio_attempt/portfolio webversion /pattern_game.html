@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>stage 4</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="#"></script> <!--placeholder for your .js file>-->
+  </script>
+  <script src="#"></script> <!--placeholder for your .js file>-->
+  <style>
+  body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+   
+      
+      body {
+        background-color: #85baa1;
+        color: #4A5174;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      .box {
+        
+        
+        float:right;
+        width: 33.33%;
+        padding: 30px;
+      }
+
+      body {
+        background-color: #85baa1;
+        color: #4A5174
+      }
+.allign-r{
+  position: relative;
+  
+  min-height: 50px;
+}
+
+.allign-a{
+position: absolute;
+
+left: 50%;
+}
+
+
+
+.w3-padding32 {
+padding-top:32px!important;padding-bottom:32px!important
+}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+
+.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+
+.w3-bar-item{
+padding:8px 16px;
+  float:left;
+  width:auto;
+  border:none;
+  display:block;
+  outline:0
+}
+
+.w3-bar{display:inline-block;width:auto} 
+.w3-bar{width:100%;overflow:hidden}
+
+a:link, a:visited {
+
+color: white;
+border: 2px black;
+padding: 4px 4px ;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+
+
+
+}
+
+
+a:hover, a:active {
+background-color: #Ceeddb;
+color: #67597a;
+}
+
+dl dt {
+  float: left;
+  width: 30%;
+}
+
+      </style>
+</head>
+<body>
+
+    <dt>
+    <script>
+    
+    var u;
+var count;
+var mods = [];
+
+function setup() {
+  createCanvas(500, 500);
+  u = 150;
+  var highCount = (height/150)+2;
+  var wideCount = (width/150)+2;
+  count = int(highCount * wideCount);
+  
+  var index = 0;
+  for (var xc = 0; xc < wideCount; xc++) {
+    for (var yc = 0; yc < highCount; yc++) {
+      mods[index++] = new Module(int(xc)*u,int(yc)*u);
+    }
+   }
+  
+}
+
+function draw() {
+  //background(200);
+  translate(-50, -50);
+  noStroke();
+  for (var i = 0; i <= count; i++) {
+    mods[i].draw2();
+    mods[i].Over();
+  }
+}
+
+function mousePressed() {
+  translate(-50, -50);
+  for (var i = 0; i <= count; i++) {
+    mods[i].Pressed();
+  }
+}
+
+function keyTyped() {
+  for (var i = 0; i <= count; i++) {
+    mods[i].Typed();
+  }
+  
+  if (keyCode === UP_ARROW || 
+  keyCode === DOWN_ARROW ||
+  keyCode === LEFT_ARROW ||
+  keyCode === RIGHT_ARROW ||
+  keyCode === BACKSPACE ||
+  keyCode === DELETE ||
+  keyCode === ENTER ||
+  keyCode === RETURN ||
+  keyCode === TAB ||
+  keyCode === ESCAPE ||
+  keyCode === SHIFT ||
+  keyCode === CONTROL ||
+  keyCode === OPTION ||
+  keyCode === ALT  ) {
+    mods[i].Typed();
+}
+}
+
+function Module(_x, _y) {
+  this.x = _x;
+  this.y = _y;
+  this.a = 0;
+  this.b = false;
+  this.c = 200;
+  this.isOverRectangle = false;
+  this.k = 0;
+  this.s = 75;
+  this.r = 0;
+  this.c1 = '#Ceeddb';
+  this.c2 = '#1C4073';
+}
+
+Module.prototype.Pressed = function() {
+  translate(-50, -50);
+    if (mouseX>(this.x)-(this.s) && mouseX<(this.x)+(this.s) && mouseY>(this.y)-(this.s) && mouseY<(this.y)+(this.s)){
+      this.k = this.k+1;
+      if (this.k === 8) {
+        this.k = 0;
+      }
+    }
+}
+
+Module.prototype.Typed = function() {
+    if (mouseX>(this.x)-(this.s) && mouseX<(this.x)+(this.s) && mouseY>(this.y)-(this.s) && mouseY<(this.y)+(this.s)){
+      this.r = this.r+HALF_PI;
+    }
+}
+
+Module.prototype.Over = function() {
+  if (mouseX>(this.x)-(this.s) && mouseX<(this.x)+(this.s) && mouseY>(this.y)-(this.s) && mouseY<(this.y)+(this.s)){
+    this.isOverRectangle = true;
+  } else {
+    this.isOverRectangle = false;
+  }
+}
+
+
+Module.prototype.draw2 = function() {
+  push();
+  translate(this.x, this.y);
+  rectMode(CENTER);
+  rotate(this.r);
+  if (this.k === 0){
+    fill(this.c1);
+    rect(0,0,this.s*2,this.s*2);
+  }
+  if (this.k === 1){
+    fill(this.c1);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c2);
+    arc(this.s, 0, this.s*2, this.s*2, HALF_PI, -HALF_PI);
+    //triangle(0,0,this.s,-this.s,this.s,this.s);
+  }
+  if (this.k === 2){
+    fill(this.c1);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c2);
+    arc(this.s, this.s, this.s*4, this.s*4, PI, -HALF_PI);
+    //triangle(this.s,-this.s,this.s,this.s,-this.s,this.s);
+  }
+  if (this.k === 3){
+    fill(this.c1);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c2);
+    arc(this.s, 0, this.s*2, this.s*2, HALF_PI, -HALF_PI);
+    arc(-this.s, 0, this.s*2, this.s*2, -HALF_PI, HALF_PI);
+    //triangle(0,0,this.s,-this.s,this.s,this.s);
+    //triangle(0,0,-this.s,-this.s,-this.s,this.s);
+  }
+  if (this.k === 4){
+    fill(this.c2);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c1);
+    arc(this.s, 0, this.s*2, this.s*2, HALF_PI, -HALF_PI);
+    arc(-this.s, 0, this.s*2, this.s*2, -HALF_PI, HALF_PI);
+    //triangle(this.s,-this.s,this.s,this.s,-this.s,this.s);
+    //triangle(this.s,this.s,-this.s,this.s,-this.s,-this.s);
+  }
+  if (this.k === 5){
+    fill(this.c2);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c1);
+    arc(this.s, this.s, this.s*4, this.s*4, PI, -HALF_PI);
+    //triangle(this.s,-this.s,this.s,this.s,-this.s,this.s);
+  }
+  if (this.k === 6){
+    fill(this.c2);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c1);
+    arc(this.s, 0, this.s*2, this.s*2, HALF_PI, -HALF_PI);
+    //triangle(0,0,this.s,-this.s,this.s,this.s);
+  }
+  if (this.k === 7){
+    fill(this.c1);
+    rect(0,0,this.s*2,this.s*2);
+    fill(this.c2);
+    rect(0,0,this.s*2,this.s*2);
+  }
+  
+  if(this.isOverRectangle === true)
+  {
+    fill('rgba(255, 255, 255, 0.2)');
+  } else {
+	  noFill(); 
+  }
+  rectMode(CENTER);
+  rect(0,0,this.s*2,this.s*2);
+  
+  pop();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+    </script>
+    </dt>
+
+     <!-- !PAGE CONTENT! -->
+	<div class="w3-main w3-content w3-padding" style="max-		width:1200px;margin-top:20px">
+    
+  </div>
+    <!-- Pagination -->
+  
+<div class="allign-r w3-padding-32">
+    <div class="allign-a w3-bar">
+      <a href="animate3/fred3.html" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="index.html" class="w3-bar-item w3-button w3-hover-black">index</a>
+       <a href="animate5/fred5.html" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+</div>
+
+
+    <div class="box" style="background-color:#Ceeddb;">
+      <p>Try and recreate the patterns from the previous page! Click on the box to change the shame and press any key to rotate</p>
+      <p>
+        Here we have memory, being able to create some sort of inner representation of the world, this allows a creature to 
+        pursue their food even when it is out of sensory range. They are able to prioritise what is important, gaining the ability to focus on a target. 
+      </p>
+  
+      <a href="stage4.html">Patterns</a>
+    </div>
+    
+    
+</body>
+</html>
