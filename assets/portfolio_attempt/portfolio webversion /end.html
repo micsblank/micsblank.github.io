@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>stage 5 game</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="#"></script> <!--placeholder for your .js file>-->
+  </script>
+  <script src="#"></script> <!--placeholder for your .js file>-->
+  <style>
+  body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+   
+      
+      body {
+        background-color: #85baa1;
+        color: #4A5174;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      .box {
+        
+        
+        float:right;
+        width: 33.33%;
+        padding: 30px;
+      }
+
+      body {
+        background-color: #85baa1;
+        color: #4A5174
+      }
+.allign-r{
+  position: relative;
+  
+  min-height: 50px;
+}
+
+.allign-a{
+position: absolute;
+
+left: 50%;
+}
+
+
+
+.w3-padding32 {
+padding-top:32px!important;padding-bottom:32px!important
+}
+.w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap}
+
+.w3-hover-black:hover{color:#fff!important;background-color:#000!important}
+
+.w3-bar-item{
+padding:8px 16px;
+  float:left;
+  width:auto;
+  border:none;
+  display:block;
+  outline:0
+}
+
+.w3-bar{display:inline-block;width:auto} 
+.w3-bar{width:100%;overflow:hidden}
+
+a:link, a:visited {
+
+color: white;
+border: 2px black;
+padding: 4px 4px ;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+
+
+
+}
+
+
+a:hover, a:active {
+background-color: #Ceeddb;
+color: #67597a;
+}
+
+dl dt {
+  float: left;
+  width: 30%;
+}
+
+      </style>
+</head>
+<body>
+
+    <dt>
+    <script>
+    let bx;
+let by;
+function setup() {
+  createCanvas(500, 500);
+  bx = width / 2.0;
+  by = height / 2.0;
+  rectMode(RADIUS);
+  strokeWeight(2);
+}
+
+function draw() {
+  background(220);
+  fill(0);
+
+  push();
+   // print person
+  translate(50, 450);
+  scale(2);
+  for (let i = 0; i < 5; i++) {
+    thing(i);
+    translate(50, 0);
+  }
+  pop();
+//   // Test if the cursor is over the box
+//   if (
+//     mouseX > bx - boxSize &&
+//     mouseX < bx + boxSize &&
+//     mouseY > by - boxSize &&
+//     mouseY < by + boxSize
+//   ) {
+//     overBox = true;
+//     if (!locked) {
+      
+//       fill(244+40, 122+40, 158+40);
+//     }
+//   } else {
+//     stroke(156, 39, 176);
+//     fill(244, 122, 158);
+//     overBox = false;
+//   }
+
+  bx = 400;
+  by = 300;
+  //heart
+  noStroke();
+  //stroke(156, 39, 176);
+  fill(244, 122, 158);
+  triangle(bx- 37.75, by + 6, bx + 37.75, by + 6, bx, by +60);
+  ellipse(bx - 18, by, 40, 38);
+  ellipse(bx + 18, by, 40, 38);
+  
+  
+  bx = 50;
+  by = 345;
+  
+  fill(0);
+  stroke(0);
+  textSize(40);
+  text("Z", bx, by);
+  textSize(30)
+  text("Z", bx + 30, by - 30);
+  textSize(20)
+  text("Z", bx + 55, by - 55);
+  
+  
+  bx = 150;
+  by = 500;
+  circle(bx, by, 100);
+  push();
+  strokeWeight(6);
+  stroke(230, 80, 4);
+  fill(230, 200, 40)
+  circle(bx, by, 80);
+  
+  circle(bx - 10, by - 15, 5);
+  circle(bx - 20, by + 5, 5);
+  circle(bx + 20, by + 10, 5);
+  circle(bx + 18, by - 10, 5);
+  circle(bx , by + 20, 5);
+  circle(bx , by, 5);
+  pop();
+  
+  bx = 280;
+  by = 475;
+  stroke(0);
+  noFill(220)
+  rect(bx, by, 10, 20);
+  fill(200, 200, 250);
+  rect(bx, by + 5, 10, 15);
+}
+
+
+
+
+function thing(i) {
+  fill(100, 140, 123);
+  noStroke();
+  ellipse(0, 0, 56, 100);
+   
+  fill(225);
+  circle(-10, -15, 15);
+  circle(10, -15, 15);
+  
+  
+  fill(0);
+  //character traits
+   if (i == 3) {
+    circle(-8, -15, 10);
+    circle(+12, -15, 10);
+    fill(220, 180, 160);
+    //arc(0, 0, 10, 10, 0, HALF_PI);
+    arc(0, 0, 10, 10, 0, PI, CHORD);
+  } else if (i == 4) {
+    circle(-12, -15, 10);
+    circle(8, -15, 10);
+    fill(220, 180, 160);
+    arc(0, 0, 10, 10, 0, PI , CHORD);
+  } else {
+    circle(-10, -16, 10);
+    circle(+10, -16, 10);
+  }
+  if (i == 0) {
+    fill(100, 140, 123);
+    rect(0, -20, 20, 4);
+    fill(240, 150, 150);
+    rect(0, 1, 10, 2)
+  } else if (i == 1) {
+    fill(230, 150, 170);
+    ellipse(0, 2, 20, 12);
+  } else if (i == 2) {
+    fill(220, 160, 160);
+    ellipse(0, 2, 12, 12);
+    fill(150, 150, 200);
+    
+    push();
+    translate(10, -30);
+    scale(.5);
+    ellipse(0, 2, 12, 12);
+    triangle(-6, 0, 6, 0, 0, -10);
+    pop();
+  }
+  
+}
+    </script>
+    </dt>
+
+     <!-- !PAGE CONTENT! -->
+	<div class="w3-main w3-content w3-padding" style="max-		width:1200px;margin-top:20px">
+    
+  </div>
+    <!-- Pagination -->
+  
+<div class="allign-r w3-padding-32">
+    <div class="allign-a w3-bar">
+      <a href="animate4/fred4.html" class="w3-bar-item w3-button w3-hover-black">«</a>
+      <a href="index.html" class="w3-bar-item w3-button w3-hover-black">index</a>
+     	<a href="animate6/fred6.html" class="w3-bar-item w3-button w3-hover-black">»</a>
+    </div>
+</div>
+
+</div>
+<div class="box" style="background-color:#Ceeddb;">
+     <p>Well done!</p>
+   </div>
+    
+    
+</body>
+</html>

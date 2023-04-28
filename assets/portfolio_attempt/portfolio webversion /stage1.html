@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>stage 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.js"></script>
+    <script src="#"></script> <!--placeholder for your .js file>-->
+    <style>
+    body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+
+     
+        
+        body {
+          background-color: #85baa1;
+          color: #4A5174;
+        }
+        * {
+          box-sizing: border-box;
+        }
+
+        .box {
+
+          float:right;
+          margin-right: 200;
+          width: 33.33%;
+          padding: 30px;
+          border-radius: 5px;
+        }
+
+        body {
+          background-color: #85baa1;
+          color: #4A5174
+        }
+  .allign-r{
+  	position: relative;
+    
+  	min-height: 50px;
+}
+
+.allign-a{
+  position: absolute;
+  
+  left: 50%;
+}
+
+
+
+.w3-padding32 {
+          padding-top:32px!important;padding-bottom:32px!important;background-color:'#327A57'!important;
+        }
+.w3-button{border:none;border-radius:2px;margin:5px;display:inline-block;padding:10px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:#34624C;text-align:center;cursor:pointer;white-space:nowrap}
+
+.w3-hover-black:hover{color:#fff!important;background-color:#327A57!important}
+
+.w3-bar-item{
+	padding:8px 16px;
+    float:left;
+    width:auto;
+    border:none;
+    display:block;
+    outline:0
+}
+
+.w3-bar{display:inline-block;width:auto} 
+.w3-bar{width:100%;overflow:hidden}
+
+a:link, a:visited {
+ 
+  color: white;
+  border: 2px black;
+  padding: 4px 4px ;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  
+  
+  
+}
+
+
+a:hover, a:active {
+  background-color: #Ceeddb;
+  color: #67597a;
+}
+dl dt {
+  float: left;
+  width: 30%;
+}
+
+        </style>
+</head>
+<body>
+
+<dt>
+<script>
+    
+var t;
+
+function setup() {
+  createCanvas(500, 500);
+  //background(50, 50, 200);
+  t = 0;
+}
+
+function draw() {
+  // fade the background by giving it a low opacity
+  background(0, 10);
+  background(74, 81, 116, 50);
+
+  var x = width * noise(t);
+  var y = height * noise(t+5);
+  var r = 200 * noise(t+10);
+  var g = 200 * noise(t+15);
+  var b = 255 * noise(t+20);
+  var r = 1 * noise(t);
+  noStroke();
+  fill(r, g, b);
+  //ellipse(x, y, 120, 120);
+  translate(x,y);
+  rotate(PI/r)
+  dragonfly();
+  t = t + 0.01;
+}
+
+
+function dragonfly() {
+    // lower wings
+  stroke(200,200,170);
+  rotate(-PI/6);
+  ellipse(-15,-15,60,20);
+  rotate(PI/6);
+  rotate(PI/6);
+  ellipse(15,-15,60,20);
+  rotate(-PI/6);
+  // upper wings
+  ellipse(-30,-15,70,20);
+  ellipse(30,-15,70,20);
+  
+  //antennae
+  line(0,-35, 10,-55 );
+  line(0,-35, -10,-55 );
+  
+  //body
+  ellipse(0,0,10,70);
+  ellipse(0,-18,15,30);
+  ellipse(0,-35,20,20);
+}
+
+    </script>
+  </dt>
+      <!-- !PAGE CONTENT! -->
+	<div class="w3-main w3-content w3-padding" style="max-		width:1200px;margin-top:20px">
+    
+  	</div>
+      <!-- Pagination -->
+  	
+  <div class="allign-r w3-padding-32">
+    	<div class="allign-a w3-bar">
+        <a href="stage0.html" class="w3-bar-item w3-button w3-hover-black">«</a>
+        <a href="index.html" class="w3-bar-item w3-button w3-hover-black">index</a>
+     	 <a href="stage2.html" class="w3-bar-item w3-button w3-hover-black">»</a>
+    	</div>
+ </div>
+ 
+    <div class="box" style="background-color:#Ceeddb;">
+      <p>Here is the more common starting point is a living thing. Such a creature needs to sustain itself
+        and reproduces. To do so, it needs food. 
+        This is where an awareness of the world comes in handy. 
+        Thus here we have the random movement in search of food although it never moves towards a particular direction. 
+        </p>
+    </div>
+
+    
+</body>
+</html>
