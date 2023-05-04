@@ -1,2 +1,0 @@
-# micsblank.github.io
-Portfolio
