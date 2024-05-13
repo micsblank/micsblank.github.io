@@ -27,6 +27,8 @@ lib.ssMetadata = [
 
 
 (lib.Bitmap11 = function() {
+	
+	
 	this.initialize(ss["start_atlas_P_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
@@ -1548,7 +1550,11 @@ if (reversed == null) { reversed = false; }
 		this.next_btn_1.addEventListener("click", fl_ClickToGoToWebPage);
 		
 		function fl_ClickToGoToWebPage() {
-			window.open("http://sites.artdesign.unsw.edu.au/~z5312842/final/", "_blank");
+			var currentURL = window.location.href;
+			
+			var newURL = currentURL.replace(/start\/start\.html/, "index.html");
+			window.location.href = newURL;
+			//window.open("http://sites.artdesign.unsw.edu.au/~z5312842/final/", "_blank");
 		}
 	}
 
