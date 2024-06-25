@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Large Paragraph with Links</title>
+    <title>Portfolio</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>'), auto;
+            background-color: #222222;
+            color: #f2f2f2;
+            /* cursor: none; */
+            font-family: monaco, Consolas, "Lucida Console", monospace;
         }
-        .container {
+
+        /* .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100%;
+        } */
+        .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+        z-index: 2;
+        pointer-events: none;
+        }
+
+        nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 95vw;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        background-color: rgba(0, 0, 0, 0.15)
+        }
+
+        nav a, span {
+        text-decoration: none;
+        color: #ccff55;
+        font-size: 14px;
+        text-transform: uppercase;
         }
         .large-paragraph {
             font-size: 42px;
@@ -23,61 +53,255 @@
             text-align: justify;
             max-width: 900px;
         }
+
         .large-paragraph a {
-            color: blue;
+            color: #f2f2f2;
             text-decoration: none;
             transition: color 0.3s;
         }
+
         .large-paragraph a:hover {
-            color: red; /* Change to hover color */
-            cursor: none; /* Disable default cursor */
-            animation: morphCursor 0.01s linear forwards; /*  Apply animation */
+            color: #94f294; /* Change to hover color */
         }
-        .large-paragraph a:active {
-            color: green; /* Change to click color */
+
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            translate: -10px -10px;
+            background: rgba(165, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            
+            transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
         }
-        
-        @keyframes morphCursor {
+
+        .cursor-hover {
+           
+            width: 60px;
+            height: 60px;
+            /* transform: translate(-20px, -20px); */
+            animation: bounce 0.3s ease;
+        }
+
+        @keyframes bounce {
             0% {
-                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="black"/></svg>'), auto;
+                transform: scale(1);
+                /* transform: translate(-10px, -10px); */
+                
+            }
+            50% {
+                transform: scale(1.2);
+                /* transform: translate(-20px, -20px); */
             }
             100% {
-                cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="0" y="0" width="20" height="20" fill="black"/></svg>'), auto;
+                transform: scale(1);
+                /* transform: translate(-20px, -20px); */
             }
         }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            width: 100%;
+            height: calc(100vh - 100%); /* Adjust height based on existing content */
+        }
+
+        /* .grid-item {
+            overflow: hidden;
+            
+        } */
+
+        .grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+        .blocks_container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            }
+
+            .blocks {
+            background-color: #000;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            overflow: hidden;
+            z-index: 1000;
+            }
+
+            .block {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.075);
+            transition: border-color 0.2s ease;
+            }
+
+            .impact {
+            border-color: #ff00ff;
+            }
+        
     </style>
 </head>
 <body>
+    <div class="blocks_container">
+        <div class="blocks"></div>
+      </div>
+    <div class="cursor" id="cursor"></div>
     <div class="container">
-        <div class="large-paragraph" id="large-paragraph">
-            OLDWEBSITE   FICHCALULATOR   ANIMATE   CREATIVECODE   PAINT   WEBDESIGN   3D_WORK
-        </div>
+        <nav>
+            <!-- <a href="https://twitter.com/theunknowman_80">Follow Me</a>
+            <span> -->
+            <span><a href="creativeCode.html">CREATIVECODE  </a> </span>
+            <span><a href="calculator.html">FICHCALULATOR</a></span>
+            <span><a href="artGallery.html">PAINT</a></span>
+            <span><a href="artGallery.html">PASTWORK </a></span>
+            
+            <a href="indexOld.html">OLDWEBSITE</a>
+            <!-- <a href="creativeCode.html">CREATIVECODE</a> -->
+            <!-- <span class="large-paragraph"  id="large-paragraph" >CREATIVECODE ANIMATE FICHCALULATOR &nbsp;&nbsp;PAINT &nbsp;&nbsp;PASTWORK &nbsp;&nbsp;OLDWEBSITE </span> -->
+          </nav>
     </div>
+    
+    <!-- <div class="grid">
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 1"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 2"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 3"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 4"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 5"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 6"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 7"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 8"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 9"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 10"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 11"></div>
+        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 12"></div>
+    </div>
+    test -->
 
     <script>
         // Get the paragraph element
-        var paragraph = document.getElementById("large-paragraph");
-        // Split the text content into words
-        var words = paragraph.innerText.split(" ");
-        // Define an array of page-relative links
-        var pageLinks = [
-            "indexOld.html",
-            "calculator.html",
-            "galleryAnimate.html",
-            "galleryCode.html",
-            "galleryPaint.html",
-            // Add more page-relative links as needed
-        ];
-        // Empty the paragraph
-        paragraph.innerHTML = "";
-        // Loop through each word and create an anchor tag for it
-        words.forEach(function(word, index) {
-            var link = document.createElement("a");
-            // Assign each word a corresponding page-relative link from the array
-            link.href = pageLinks[index % pageLinks.length]; // Cycle through the links
-            link.textContent = word + " "; // Add a space after each word
-            paragraph.appendChild(link);
+        // var paragraph = document.getElementById("large-paragraph");
+        // // Split the text content into words
+        // var words = paragraph.innerText.split(" ");
+        // // Define an array of page-relative links
+        // var pageLinks = [
+        //     "creativeCode.html",
+        //     "animate.html",
+        //     "calculator.html",
+        //     "artGallery.html",
+        //     "pastWork.html",
+        //     "indexOld.html",
+        //     "three/index.html"
+        //     // Add more page-relative links as needed
+        // ];
+        // // Empty the paragraph
+        // paragraph.innerHTML = "";
+        // // Loop through each word and create an anchor tag for it
+        // words.forEach(function(word, index) {
+        //     var link = document.createElement("a");
+        //     // Assign each word a corresponding page-relative link from the array
+        //     link.href = pageLinks[index % pageLinks.length]; // Cycle through the links
+        //     link.textContent = word + "  "; // Add a space after each word
+        //     paragraph.appendChild(link);
+        // });
+
+        const cursor = document.getElementById('cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.tagName === 'A' || e.target.closest('.grid-item')) {
+                cursor.classList.add('cursor-hover');
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.tagName === 'A' || e.target.closest('.grid-item')) {
+                cursor.classList.remove('cursor-hover');
+            }
+        });
+        
+
+        window.addEventListener("DOMContentLoaded", () => {
+  const blockContainer = document.querySelector(".blocks"); // Utilisation de querySelector pour sélectionner un élément spécifique par sa classe
+  const size = 40;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const cols = Math.ceil(width / size);
+  const rows = Math.ceil(height / size);
+  const numBlocks = cols * rows;
+  
+  function createBlocks() {
+    for (let i = 0; i < numBlocks; i++) {
+      const block = document.createElement("div");
+      block.classList.add("block");
+      block.dataset.index = i;
+      block.addEventListener("mousemove", impactNeighbors);
+      blockContainer.appendChild(block); // Ajout du bloc à blockContainer
+    }
+  }
+  
+  function impactNeighbors() {
+    const index = parseInt(this.dataset.index);
+    const neighbors = [
+      index - 1,
+      index + 1,
+      index - cols,
+      index + cols,
+      index - cols - 1,
+      index - cols + 1, 
+      index + cols - 1,
+      index + cols + 1,
+    ].filter((i) => i >= 0 && i < numBlocks && Math.abs((i % cols) - (index % cols)) <= 1);
+    
+    this.classList.add("impact");
+    setTimeout(() => {
+      this.classList.remove("impact");
+    }, 500);
+    
+    shuffleArray(neighbors).slice(0, 1).forEach((nIndex) => {
+      const neighbor = blockContainer.children[nIndex]; // Utilisation de blockContainer[nIndex]
+      if (neighbor) { 
+        neighbor.classList.add("impact");
+        setTimeout(() => {
+          neighbor.classList.remove("impact");
+        }, 500);
+      }       
+    });
+  }
+  
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Correction de l'échange d'éléments du tableau
+    }
+    return array;
+  }
+  
+  createBlocks();
+});
+
     </script>
 </body>
 </html>
+
+<!-- https://codepen.io/nodesader/pen/WNBvMBN -->
