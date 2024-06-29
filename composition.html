@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Abstract Artwork with Advanced Color Picker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/> <!-- 'classic' theme -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            background: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #controls {
+            margin-right: 20px;
+        }
+
+        #colorPickers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #canvasContainer {
+            flex-grow: 1;
+        }
+
+        #explanation {
+            margin-top: 90px;
+            max-width: 400px;
+        }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #f8f9fc;
+      text-decoration: none;
+      border: 2px solid #d3d3d340;  
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #d3d3d3;
+    }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Home</a>
+    <div id="controls">
+
+        <div id="explanation">
+            <h2>Composition for dummies</h2>
+            <p>
+                Inspired by fibonacci, Mondrian's Composition II and motivated by my artworks looking not quite right, I created this composition generator. 
+                Put in your colours and click reload until you see a layout that scratches your brain. Mirror the composition for your artwork and now you have good harmony without all of the guesswork.
+            </p>
+        </div>
+        <div id="colorPickers">
+            <div class="color-picker" id="color-picker-1"></div>
+            <div class="color-picker" id="color-picker-2"></div>
+            <div class="color-picker" id="color-picker-3"></div>
+            <div class="color-picker" id="color-picker-4"></div>
+        </div>
+        <br>
+        <label for="canvasSize">Select Canvas Size: </label>
+        <select id="canvasSize">
+            <option value="600x600">600x600</option>
+            <option value="800x600">800x600</option>
+            <option value="600x800">600x800</option>
+            <option value="800x800">800x800</option>
+        </select>
+        <br><br>
+        <button id="reloadButton">Reload Composition</button>
+        
+    </div>
+    <div id="canvasContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let colors = ['#FF5733', '#3498DB', '#F1C40F', "#fff"];
+        let canvasWidth = 600;
+        let canvasHeight = 600;
+        let count = 0;
+
+        function setup() {
+            let canvas = createCanvas(canvasWidth, canvasHeight);
+            canvas.parent('canvasContainer');
+            background(255);
+            drawComposition(0, 0, width, height);
+
+            document.getElementById('reloadButton').addEventListener('click', reloadComposition);
+            document.getElementById('canvasSize').addEventListener('change', changeCanvasSize);
+            count = 0;
+            initializeColorPickers();
+        }
+
+        function drawComposition(x, y, w, h) {
+            if (w < 20 || h < 20) {
+                return;
+            }
+            
+            let randomColor = colors[Math.floor(Math.random() * colors.length)];
+            fill(randomColor);
+            rect(x, y, w, h);
+            
+            let splitChance = random(1);
+            let chance = 0.5;
+            if (splitChance < chance || count < 2) {
+                count += 1;
+                if (w > h) {
+                    let split = random(0.4, 0.6);
+                    drawComposition(x, y, w * split, h);
+                    drawComposition(x + w * split, y, w * (1 - split), h);
+                } else {
+                    let split = random(0.4, 0.6);
+                    drawComposition(x, y, w, h * split);
+                    drawComposition(x, y + h * split, w, h * (1 - split));
+                }
+            }
+        }
+
+        function reloadComposition() {
+            clear(); // Clear the canvas
+            background(255); // Reset the background
+            count = 0;
+            drawComposition(0, 0, width, height); // Redraw the composition
+        }
+
+        function changeCanvasSize() {
+            let size = document.getElementById('canvasSize').value.split('x');
+            canvasWidth = parseInt(size[0]);
+            canvasHeight = parseInt(size[1]);
+            resizeCanvas(canvasWidth, canvasHeight);
+            reloadComposition();
+        }
+
+        function initializeColorPickers() {
+            const pickrOptions = {
+                theme: 'classic', // or 'monolith', or 'nano'
+                default: '#FF5733',
+
+                components: {
+                    // Main components
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+
+                    // Input / output Options
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        hsla: true,
+                        hsva: true,
+                        cmyk: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            };
+
+            const pickr1 = Pickr.create({
+                ...pickrOptions,
+                el: '#color-picker-1'
+            }).on('save', color => {
+                colors[0] = color.toHEXA().toString();
+            });
+
+            const pickr2 = Pickr.create({
+                ...pickrOptions,
+                el: '#color-picker-2'
+            }).on('save', color => {
+                colors[1] = color.toHEXA().toString();
+            });
+
+            const pickr3 = Pickr.create({
+                ...pickrOptions,
+                el: '#color-picker-3'
+            }).on('save', color => {
+                colors[2] = color.toHEXA().toString();
+            });
+
+            const pickr4 = Pickr.create({
+                ...pickrOptions,
+                el: '#color-picker-4'
+            }).on('save', color => {
+                colors[3] = color.toHEXA().toString();
+            });
+        }
+    </script>
+</body>
+</html>

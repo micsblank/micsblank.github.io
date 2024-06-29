@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.js"></script>
+    <title>Set Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="../index.html" class="back-button">Back to Home</a>
+    <h1>Set Game</h1>
+    <div id="container">
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <p>Select three cards that form a set.</p>
+            <p>A set consists of three cards in which each of the card's attributes (hue, saturation, and lightness) when looked at separately are either all the same or all different.</p>
+        </div>
+        <div id="game-board"></div>
+        <div id="found-sets">
+            <h2>Found sets</h2>
+        </div>
+    </div>
+    <button id="check-set">Check Set</button>
+    <button id="hint">Hint</button>
+    <p id="hint-output"></p>
+   
+    <div id="canvas-container">
+        
+        <div id="hover-text">This is an automatic composition generator, made to show how hue, saturation and lightness change the weight and feel of a piece visually. 
+            I made this to use as inspiration to gain a better understanding of colour theory.</div>
+        <canvas id="visualCanvas" width="500px" height="500px"></canvas>
+        
+    </div>
+    <button id="reload">Reload</button>
+
+    <script src="script.js"></script>
+</body>  

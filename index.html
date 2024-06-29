@@ -4,304 +4,361 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
     <style>
-        body, html {
+        body {
             margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #222222;
-            color: #f2f2f2;
-            /* cursor: none; */
-            font-family: monaco, Consolas, "Lucida Console", monospace;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #020202;
         }
-
-        /* .container {
+        .landing {
+            height: 110vh;
+            /* background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); */
+            background-color: black;
+            color: white;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100%;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+        /* @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         } */
-        .content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        padding: 2rem;
-        z-index: 2;
-        pointer-events: none;
+        
+        a{
+            text-decoration: none; 
         }
 
-        nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 95vw;
-        padding: 1.5rem;
-        display: flex;
-        justify-content: space-between;
-        background-color: rgba(0, 0, 0, 0.15)
+        h1 {
+            font-size: 4em;
+            margin: 0;
         }
-
-        nav a, span {
-        text-decoration: none;
-        color: #ccff55;
-        font-size: 14px;
-        text-transform: uppercase;
-        }
-        .large-paragraph {
-            font-size: 42px;
-            line-height: 1.5;
-            text-align: justify;
-            max-width: 900px;
-        }
-
-        .large-paragraph a {
-            color: #f2f2f2;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .large-paragraph a:hover {
-            color: #94f294; /* Change to hover color */
-        }
-
-        .cursor {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            translate: -10px -10px;
-            background: rgba(165, 255, 255, 0.8);
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: difference;
-            
-            transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
-        }
-
-        .cursor-hover {
-           
-            width: 60px;
-            height: 60px;
-            /* transform: translate(-20px, -20px); */
-            animation: bounce 0.3s ease;
-        }
-
-        @keyframes bounce {
-            0% {
-                transform: scale(1);
-                /* transform: translate(-10px, -10px); */
-                
-            }
-            50% {
-                transform: scale(1.2);
-                /* transform: translate(-20px, -20px); */
-            }
-            100% {
-                transform: scale(1);
-                /* transform: translate(-20px, -20px); */
-            }
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            width: 100%;
-            height: calc(100vh - 100%); /* Adjust height based on existing content */
-        }
-
-        /* .grid-item {
-            overflow: hidden;
-            
-        } */
-
-        .grid-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .grid-item:hover img {
-            transform: scale(1.1);
-        }
-        .blocks_container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            }
-
-            .blocks {
-            background-color: #000;
-            width: 100vw;
-            height: 100vh;
+        .sections {
+            padding-top: 5em;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-end;
+            
+            flex-direction: column;
+            align-items: center;
+        }
+        .section {
+            width: 100%;
+            padding: 5em 0;
+            background:  #020202;
+            color: #f2f2f2;
+            /* padding: 2em; */
+            /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
+            display: flex;
+            align-items: center;
+            /* animation: slideIn 1s ease-in-out; */
+            z-index: 1;
+        }
+
+        .sections :hover {
+            background-color: rgb(13, 5, 53);
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+            /* background:  #202020; */
+        }
+        /* @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        } */
+        .section img {
+            width: 50%;
+            /* margin: 0 1em; */
+            /* border-radius: 8px; */
+        }
+        .section-text {
+            margin-left: 5em;
+            margin-right: 5em;
+            width: 40%;
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .pills {
+            display: flex;
             flex-wrap: wrap;
-            overflow: hidden;
-            z-index: 1000;
+            gap: 10px;
+            margin-top: 1em;
+        }
+        .pill {
+            background-color: #6a11cb;
+            color: white;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        .pill:nth-child(2n+1) {
+            background-color: #2575fc;
+        }
+        .pill:nth-child(3) {
+            background-color: #ff4081;
+        }
+        .venn-diagram {
+          
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            opacity: 0.7;
+            filter: blur(30px);
+          
+            z-index: 0;
+        }
+
+        .circle1 {
+            background-color: rgb(240, 102, 102);
+            left: 450px;
+            top: 275px;
+            mix-blend-mode: screen;
+            
+            animation: pulse2 2s ease 0.5s infinite;
+        }
+
+        .circle2 {
+            background-color: rgb(151, 151, 243);
+            left: 500px;
+            top: 275px;
+            mix-blend-mode: screen;
+            animation: pulse2 2s ease 1s infinite;
+        }
+
+        .circle3 {
+            background-color: rgb(128, 253, 128);
+            left: 475px;
+            top: 350px;
+            
+            mix-blend-mode: screen;
+            animation: pulse2 2s ease 0s infinite;
+            
+        }
+        .box {
+          padding: 100px;
+        }
+        .title{
+          left: 20px;
+          /* color:white;
+          mix-blend-mode: overlay; */
+        }
+
+        @keyframes pulse1 {
+            0%, 100% {
+                transform: scale(1);
+                translate: 0px;
+              
+            }
+            25%{
+                
+                translate: 20vw -200px;
+                transform: scale(.3);
             }
 
-            .block {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.075);
-            transition: border-color 0.2s ease;
+            50% {
+                transform: scale(1.3);
+                translate: 40vw 0px;
+            }
+            /* 75% {
+                
+                translate: 40vw 0px;
+            } */
+        }
+        @keyframes pulse2 {
+            0%, 100% {
+                transform: scale(1);
             }
 
-            .impact {
-            border-color: #ff00ff;
+            50% {
+                transform: scale(1.1);
             }
+        }
+        @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-200px);
+        }
+      }
+
+        .pic{
+          opacity: 0.4;
+          mix-blend-mode:exclusion;
+        }
+        .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: rotateCube 5s infinite linear;
+    }
+
+    .face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      /* background: rgba(97, 218, 251, 0.7); */
+      border: 2px solid #61dafb;
+      box-sizing: border-box;
+    }
+
+    .front { transform: translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+    .back { transform: rotateY(180deg) translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+    .left { transform: rotateY(-90deg) translateZ(50px);background: rgba(251, 97, 202, 0.7); }
+    .right { transform: rotateY(90deg) translateZ(50px); background:rgba(251, 97, 202, 0.7); }
+    .top { transform: rotateX(90deg) translateZ(50px); background:rgba(241, 251, 97, 0.7);}
+    .bottom { transform: rotateX(-90deg) translateZ(50px);  background: rgba(241, 251, 97, 0.7);}
+
+    @keyframes rotateCube {
+      from {
+        transform: rotateX(0) rotateY(0);
+      }
+      to {
+        transform: rotateX(360deg) rotateY(360deg);
+      }
+    }
         
     </style>
 </head>
 <body>
-    <div class="blocks_container">
-        <div class="blocks"></div>
+  <div class="landing">
+    
+    <div class="venn-diagram">
+      <div class="animation-container">
+        <h2>Rotating Cube</h2>
+        <div class="cube">
+          <div class="face front"></div>
+          <div class="face back"></div>
+          <div class="face left"></div>
+          <div class="face right"></div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+        </div>
       </div>
-    <div class="cursor" id="cursor"></div>
-    <div class="container">
-        <nav>
-            <!-- <a href="https://twitter.com/theunknowman_80">Follow Me</a>
-            <span> -->
-            <span><a href="creativeCode.html">CREATIVECODE  </a> </span>
-            <span><a href="calculator.html">FICHCALULATOR</a></span>
-            <span><a href="artGallery.html">PAINT</a></span>
-            <span><a href="artGallery.html">PASTWORK </a></span>
-            
-            <a href="indexOld.html">OLDWEBSITE</a>
-            <!-- <a href="creativeCode.html">CREATIVECODE</a> -->
-            <!-- <span class="large-paragraph"  id="large-paragraph" >CREATIVECODE ANIMATE FICHCALULATOR &nbsp;&nbsp;PAINT &nbsp;&nbsp;PASTWORK &nbsp;&nbsp;OLDWEBSITE </span> -->
-          </nav>
-    </div>
-    
-    <!-- <div class="grid">
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 1"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 2"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 3"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 4"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 5"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 6"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 7"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 8"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 9"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 10"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 11"></div>
-        <div class="grid-item"><img src="./assets/img/profile-img.jpg" alt="Image 12"></div>
-    </div>
-    test -->
-
-    <script>
-        // Get the paragraph element
-        // var paragraph = document.getElementById("large-paragraph");
-        // // Split the text content into words
-        // var words = paragraph.innerText.split(" ");
-        // // Define an array of page-relative links
-        // var pageLinks = [
-        //     "creativeCode.html",
-        //     "animate.html",
-        //     "calculator.html",
-        //     "artGallery.html",
-        //     "pastWork.html",
-        //     "indexOld.html",
-        //     "three/index.html"
-        //     // Add more page-relative links as needed
-        // ];
-        // // Empty the paragraph
-        // paragraph.innerHTML = "";
-        // // Loop through each word and create an anchor tag for it
-        // words.forEach(function(word, index) {
-        //     var link = document.createElement("a");
-        //     // Assign each word a corresponding page-relative link from the array
-        //     link.href = pageLinks[index % pageLinks.length]; // Cycle through the links
-        //     link.textContent = word + "  "; // Add a space after each word
-        //     paragraph.appendChild(link);
-        // });
-
-        const cursor = document.getElementById('cursor');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-        });
-
-        document.addEventListener('mouseover', (e) => {
-            if (e.target.tagName === 'A' || e.target.closest('.grid-item')) {
-                cursor.classList.add('cursor-hover');
-            }
-        });
-
-        document.addEventListener('mouseout', (e) => {
-            if (e.target.tagName === 'A' || e.target.closest('.grid-item')) {
-                cursor.classList.remove('cursor-hover');
-            }
-        });
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <img class="pic" src="./meA.png"/>
+      <div class="box">
+        <h1 class="title">Micaela Blank</h1>
+        <h1 class="title">Creative Technologist</h1>
         
+      </div>
+      
+  </div>
+  
+</div>
+<div class="sections">
+ 
+    <div class="section" onclick="window.location.href='./saturation.html'" >
+        <img src="./assets/img/saturation/image10.jpg" alt="Portfolio Image 1">
+        <div class="section-text">
+            <h2>Saturation</h2>
+            <p>Saturation is an interactive art installation, exhibited at the UNSW 2023 Annual Exhibiton. Utilising a wide array of creative technologies across animation, programming and AI software, "Saturation" was made to capture the specific feelings being in awe and overwhelmed with technology. 
+              We have access to more colours, storytelling, people and information than ever before. Our attention is locked in a flurry of pixels and sounds which keep us entertained and over-stimulated. There are elements which speak to human vanity, sensory overload, the illusion of control and total immersion within a space. 
+            </p>
+            <div class="pills">
+                <div class="pill">Interactive Installation</div>
+                <div class="pill">CGI from Camera input</div>
+                <div class="pill">JavaScript</div>
+                <div class="pill">Machine Learning Body tracking</div>
+                <div class="pill">AI</div>
+            </div>
+        </div>
+    </div>
+  
 
-        window.addEventListener("DOMContentLoaded", () => {
-  const blockContainer = document.querySelector(".blocks"); // Utilisation de querySelector pour sélectionner un élément spécifique par sa classe
-  const size = 40;
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const cols = Math.ceil(width / size);
-  const rows = Math.ceil(height / size);
-  const numBlocks = cols * rows;
-  
-  function createBlocks() {
-    for (let i = 0; i < numBlocks; i++) {
-      const block = document.createElement("div");
-      block.classList.add("block");
-      block.dataset.index = i;
-      block.addEventListener("mousemove", impactNeighbors);
-      blockContainer.appendChild(block); // Ajout du bloc à blockContainer
-    }
-  }
-  
-  function impactNeighbors() {
-    const index = parseInt(this.dataset.index);
-    const neighbors = [
-      index - 1,
-      index + 1,
-      index - cols,
-      index + cols,
-      index - cols - 1,
-      index - cols + 1, 
-      index + cols - 1,
-      index + cols + 1,
-    ].filter((i) => i >= 0 && i < numBlocks && Math.abs((i % cols) - (index % cols)) <= 1);
-    
-    this.classList.add("impact");
-    setTimeout(() => {
-      this.classList.remove("impact");
-    }, 500);
-    
-    shuffleArray(neighbors).slice(0, 1).forEach((nIndex) => {
-      const neighbor = blockContainer.children[nIndex]; // Utilisation de blockContainer[nIndex]
-      if (neighbor) { 
-        neighbor.classList.add("impact");
-        setTimeout(() => {
-          neighbor.classList.remove("impact");
-        }, 500);
-      }       
-    });
-  }
-  
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]]; // Correction de l'échange d'éléments du tableau
-    }
-    return array;
-  }
-  
-  createBlocks();
-});
 
-    </script>
+    <div class="section" onclick="window.location.href='https://www.youtube.com/watch?v=DQghuavrfYg'">
+        <img src="./assets/img/Extra_lofi.png" alt="Portfolio Image 2">
+        <div class="section-text">
+            <h2>T&Pm Extra Lecture Lounge</h2>
+            <p>Working with Kopi Su, a creative digital studio, I lead the development of the Extra Chewing gum AI lecture lounge website. This is an AI lofi music generator made to add light, adaptable music to the backgrounds of lectures to increase focus, retention and productivity for neurodiverse students.</p>
+            <div class="pills">
+                <div class="pill">React</div>
+                <div class="pill">Tailwind</div>
+                <div class="pill">Figma</div>
+            </div>
+        </div>
+    </div>
+ 
+
+ 
+    <div class="section" onclick="window.location.href='./calculator.html'">
+        <img src="./assets/img/talia_art_graph_money_plotter.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Fich Calculator</h2>
+            <p>My dear talented sister had a problem with how to value her artwork, an issue many artists have. I plotted, graphed and created a calculator that removes the guess work.</p>
+            <div class="pills">
+                <div class="pill">Graphing</div>
+                <div class="pill">HTML/CSS</div>
+                <div class="pill">Javascript</div>
+            </div>
+        </div>
+    </div>
+
+
+   
+    <div class="section" onclick="window.location.href='./set/index.html'">
+      <img src="./assets/img/setFull.png" alt="Portfolio Image 3">
+      <div class="section-text">
+          <h2>Set the Card Game (for colour theory nerds)</h2>
+          <p>I recreated the game that I dominate at game night with my family so that my sister's boyfriend can practice without me as he lives overseas. 
+            I then went a step further and altered the game because I am a colour theory nerd.</p>
+          <div class="pills">
+              <div class="pill">HTML/CSS</div>
+              <div class="pill">Javascript</div>
+              <div class="pill">Colour Theory</div>
+          </div>
+      </div>
+    </div>
+    
+    <div class="section"  onclick="window.location.href='./assets/portfolio_attempt/portfolio webversion /Astart.html'">
+        <img src="./assets/img/space.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Levels of Consciousness</h2>
+            <p>My first creative coding project. What is consciousness? How did minds as complex as ours develop? What would those steps look like? All of these questions reimagined in an interactive narrative made for the web. 
+            </p>
+            <div class="pills">
+                <div class="pill">Adobe animate</div>
+                <div class="pill">Html</div>
+                <div class="pill">Procreate</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" onclick="window.location.href='./composition.html'">
+        <img src="./assets/img/Composition.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Mondrian's Composition</h2>
+            <p>Feeling frustrated with my paintings not being compositionally harmonious enough for me, I looked to the great artists and the fibonacci sequence
+            to "hack" composition.
+            </p>
+            <div class="pills">
+                <div class="pill">HTML/CSS</div>
+                <div class="pill">Javascript</div>
+                <div class="pill">Colour Theory</div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
 </body>
 </html>
-
-<!-- https://codepen.io/nodesader/pen/WNBvMBN -->

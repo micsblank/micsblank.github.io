@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micaela Blank's Art Newspaper</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #fdfdfd;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/fabric-of-squares.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .newspaper {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            position: relative;
+        }
+
+        .newspaper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-family: 'Georgia', serif;
+        }
+
+        .headline {
+            font-size: 28px;
+            margin: 20px 0;
+            color: #222;
+            font-family: 'Georgia', serif;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .article {
+            flex: 1;
+            min-width: 300px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        .article img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .article img:hover {
+            filter:  grayscale(0%);
+        }
+
+        .article p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .two-column {
+            flex-basis: calc(50% - 40px);
+        }
+       
+/* 
+        .three-column {
+            flex-basis: calc(33.333% - 40px);
+        } */
+        .three-column {
+            flex-basis: calc(33.333% - 40px);
+        }
+
+        .feature-article {
+            flex-basis: calc(100% - 40px);
+            background: #e0e0e0;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-article h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .feature-article p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="newspaper">
+        <h1>Micaela Blank's Art Review</h1>
+        <div class="content">
+            <div class="article three-column">
+                <h2 class="headline">Gallery 1: Exploring Emotions</h2>
+                <a href="assets/img/paint/1.png" class="link">
+                    <img src="assets/img/paint/1.png" alt="Gallery 1">
+                </a>
+                <p>Micaela Blank's first painting in this series delves into the raw emotions experienced during pivotal life moments. The use of color and brushstrokes captures the intensity of the feelings portrayed.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 2: Nature's Palette</h2>
+                <a href="assets/img/paint/2.png" class="link">
+                    <img src="assets/img/paint/2.png" alt="Gallery 2">
+                </a>
+                <p>This piece highlights the vibrant colors found in nature. Micaela's technique brings out the beauty of the natural world, showcasing her talent for capturing the essence of landscapes.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 3: Abstract Realities</h2>
+                <a href="assets/img/paint/3.png" class="link">
+                    <img src="assets/img/paint/3.png" alt="Gallery 3">
+                </a>
+                <p>In this painting, Micaela explores abstract concepts, blending reality with imagination. The complex layers and textures invite viewers to interpret the piece in their own way.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 4: Timeless Beauty</h2>
+                <a href="assets/img/paint/4.png" class="link">
+                    <img src="assets/img/paint/4.png" alt="Gallery 4">
+                </a>
+                <p>This artwork recontextualizes Baroque figures in a modern setting, showcasing Micaela's skill in merging historical themes with contemporary styles.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 5: Mythological Echoes</h2>
+                <a href="assets/img/paint/5.png" class="link">
+                    <img src="assets/img/paint/5.png" alt="Gallery 5">
+                </a>
+                <p>Micaela draws inspiration from Greek myths, presenting them through a unique lens. This piece invites viewers to rediscover these ancient stories in a new context.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 6: Urban Reflections</h2>
+                <a href="assets/img/paint/6.png" class="link">
+                    <img src="assets/img/paint/6.png" alt="Gallery 6">
+                </a>
+                <p>This painting captures the essence of urban life, with its bustling energy and intricate details. Micaela's portrayal of cityscapes reflects the vibrancy and chaos of modern cities.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 7: Silent Serenity</h2>
+                <a href="assets/img/paint/7.png" class="link">
+                    <img src="assets/img/paint/7.png" alt="Gallery 7">
+                </a>
+                <p>In this serene piece, Micaela explores the quiet moments that often go unnoticed. The subtle hues and gentle brushstrokes create a calming effect, inviting contemplation.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 8: Dynamic Energy</h2>
+                <a href="assets/img/paint/8.png" class="link">
+                    <img src="assets/img/paint/8.png" alt="Gallery 8">
+                </a>
+                <p>This artwork is a vibrant explosion of color and movement, capturing the dynamic energy of life. Micaela's bold approach brings a sense of excitement and vitality to the canvas.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 9: Hidden Depths</h2>
+                <a href="assets/img/paint/9.png" class="link">
+                    <img src="assets/img/paint/9.png" alt="Gallery 9">
+                </a>
+                <p>Micaela's ninth piece in this series invites viewers to explore the hidden depths of the human psyche. The intricate details and rich colors reveal the complexity of our inner worlds.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 10: Ethereal Dreams</h2>
+                <a href="assets/img/paint/10.png" class="link">
+                    <img src="assets/img/paint/10.png" alt="Gallery 10">
+                </a>
+                <p>This dreamy painting transports viewers to an ethereal realm. Micaela's use of light and shadow creates a sense of otherworldly beauty, inviting imagination and wonder.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 11: Vibrant Visions</h2>
+                <a href="assets/img/paint/11.png" class="link">
+                    <img src="assets/img/paint/11.png" alt="Gallery 11">
+                </a>
+                <p>With bold colors and striking contrasts, this piece is a visual feast. Micaela's dynamic style and innovative techniques bring her vibrant vision to life.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 12: Whispers of Nature</h2>
+                <a href="assets/img/paint/12.png" class="link">
+                    <img src="assets/img/paint/12.png" alt="Gallery 12">
+                </a>
+                <p>This artwork captures the gentle whispers of nature, with soft colors and delicate details. Micaela's sensitivity to the natural world is evident in every brushstroke.</p>
+            </div>
+            <div class="article three-column">
+                <h2 class="headline">Gallery 13: Rhythms of Life</h2>
+                <a href="assets/img/paint/13.png" class="link">
+                    <img src="assets/img/paint/13.png" alt="Gallery 13">
+                </a>
+                <p>This piece explores the rhythms of life, with its flowing lines and dynamic composition. Micaela's ability to convey movement and energy is truly remarkable.</p>
+            </div>
+        </div>
+    </div>
+</body>
