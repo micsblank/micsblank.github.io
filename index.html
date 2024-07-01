@@ -9,12 +9,36 @@
     <style>
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            /* font-family: 'Montserrat', sans-serif; */
+            font-family: monaco, Consolas, "Lucida Console", monospace;
             background-color: #020202;
+            
         }
+        nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40vw;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+        background-color: rgba(0, 0, 0, 0.15)
+        }
+
+        nav a, span {
+        text-decoration: none;
+        color: #ccff55;
+        font-size: 14px;
+        text-transform: uppercase;
+        }
+
+        nav :hover {
+            cursor: pointer;
+            color: #36c37a;
+        }
+
         .landing {
             height: 110vh;
-            /* background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); */
             background-color: black;
             color: white;
             display: flex;
@@ -23,61 +47,53 @@
             text-align: center;
             animation: fadeIn 2s ease-in-out;
         }
-        /* @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        } */
-        
-        a{
-            text-decoration: none; 
+
+        a {
+            text-decoration: none;
         }
 
         h1 {
             font-size: 4em;
             margin: 0;
         }
+
         .sections {
             padding-top: 5em;
             display: flex;
-            
             flex-direction: column;
             align-items: center;
         }
+
         .section {
             width: 100%;
             padding: 5em 0;
-            background:  #020202;
+            background: #020202;
             color: #f2f2f2;
-            /* padding: 2em; */
-            /* box-shadow: 0 0 10px rgba(0,0,0,0.1); */
             display: flex;
             align-items: center;
-            /* animation: slideIn 1s ease-in-out; */
             z-index: 1;
         }
 
         .sections :hover {
             background-color: rgb(13, 5, 53);
+            cursor: pointer;
+          
         }
 
         .section:nth-child(even) {
             flex-direction: row-reverse;
-            /* background:  #202020; */
         }
-        /* @keyframes slideIn {
-            from { transform: translateX(-100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        } */
+
         .section img {
             width: 50%;
-            /* margin: 0 1em; */
-            /* border-radius: 8px; */
         }
+
         .section-text {
             margin-left: 5em;
             margin-right: 5em;
             width: 40%;
         }
+
         .section h2 {
             margin-top: 0;
         }
@@ -88,176 +104,259 @@
             gap: 10px;
             margin-top: 1em;
         }
+
         .pill {
-            background-color: #6a11cb;
             color: white;
             padding: 0.5em 1em;
             border-radius: 20px;
             font-size: 0.9em;
             display: inline-block;
         }
-        .pill:nth-child(2n+1) {
+
+        .pill:nth-child(3n) {
+            background-color: #6a11cb;
+        }
+
+        .pill:nth-child(3n+1) {
             background-color: #2575fc;
         }
-        .pill:nth-child(3) {
+
+        .pill:nth-child(3n+2) {
             background-color: #ff4081;
         }
-        .venn-diagram {
-          
-            position: relative;
+
+        .animation-container {
             width: 100vw;
-            height: 100vh;
+            display: flex;
+            flex-direction: row;
+             justify-content:center;
+            /* padding: 100px;  */
         }
 
         .circle {
-            position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             opacity: 0.7;
-            filter: blur(30px);
-          
+            filter: blur(10px);
             z-index: 0;
+            color: black;
         }
 
         .circle1 {
             background-color: rgb(240, 102, 102);
-            left: 450px;
-            top: 275px;
+            translate: -50px 150px;
+            /* left: 450px;
+            top: 275px; */
             mix-blend-mode: screen;
-            
             animation: pulse2 2s ease 0.5s infinite;
         }
 
         .circle2 {
             background-color: rgb(151, 151, 243);
-            left: 500px;
-            top: 275px;
+            translate: 50px;
+            /* left: 500px;
+            top: 275px; */
             mix-blend-mode: screen;
             animation: pulse2 2s ease 1s infinite;
         }
 
         .circle3 {
             background-color: rgb(128, 253, 128);
-            left: 475px;
-            top: 350px;
-            
+            translate: 0px -75px;
+            /* left: 475px;
+            top: 350px; */
             mix-blend-mode: screen;
             animation: pulse2 2s ease 0s infinite;
-            
         }
+
         .box {
-          padding: 100px;
-        }
-        .title{
-          left: 20px;
-          /* color:white;
-          mix-blend-mode: overlay; */
+            margin-left: 200px;
+            /* margin-right: 100px; */
+            font-size: 1.4em;
         }
 
-        @keyframes pulse1 {
-            0%, 100% {
-                transform: scale(1);
-                translate: 0px;
-              
-            }
-            25%{
-                
-                translate: 20vw -200px;
-                transform: scale(.3);
-            }
-
-            50% {
-                transform: scale(1.3);
-                translate: 40vw 0px;
-            }
-            /* 75% {
-                
-                translate: 40vw 0px;
-            } */
+        .title {
+            left: 20px;
         }
+
         @keyframes pulse2 {
             0%, 100% {
                 transform: scale(1);
             }
-
             50% {
                 transform: scale(1.1);
             }
         }
-        @keyframes bounce {
-        0%, 100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-200px);
-        }
-      }
 
-        .pic{
-          opacity: 0.4;
-          mix-blend-mode:exclusion;
-        }
+
+
         .cube {
-      width: 100px;
-      height: 100px;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: rotateCube 5s infinite linear;
-    }
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 5s infinite linear;
+          
+        }
 
-    .face {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      /* background: rgba(97, 218, 251, 0.7); */
-      border: 2px solid #61dafb;
-      box-sizing: border-box;
-    }
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #61dafb;
+            box-sizing: border-box;
+        }
 
-    .front { transform: translateZ(50px); background: rgba(97, 218, 251, 0.7);}
-    .back { transform: rotateY(180deg) translateZ(50px); background: rgba(97, 218, 251, 0.7);}
-    .left { transform: rotateY(-90deg) translateZ(50px);background: rgba(251, 97, 202, 0.7); }
-    .right { transform: rotateY(90deg) translateZ(50px); background:rgba(251, 97, 202, 0.7); }
-    .top { transform: rotateX(90deg) translateZ(50px); background:rgba(241, 251, 97, 0.7);}
-    .bottom { transform: rotateX(-90deg) translateZ(50px);  background: rgba(241, 251, 97, 0.7);}
+        .front { transform: translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+        .back { transform: rotateY(180deg) translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+        .left { transform: rotateY(-90deg) translateZ(50px); background: rgba(251, 97, 202, 0.7); }
+        .right { transform: rotateY(90deg) translateZ(50px); background: rgba(251, 97, 202, 0.7); }
+        .top { transform: rotateX(90deg) translateZ(50px); background: rgba(241, 251, 97, 0.7);}
+        .bottom { transform: rotateX(-90deg) translateZ(50px); background: rgba(241, 251, 97, 0.7);}
 
-    @keyframes rotateCube {
-      from {
-        transform: rotateX(0) rotateY(0);
-      }
-      to {
-        transform: rotateX(360deg) rotateY(360deg);
-      }
-    }
-        
+        @keyframes rotateCube {
+            from {
+                transform: rotateX(0) rotateY(0);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        .popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    color:black;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contact-buttons {
+    margin-top: 20px;
+}
+
+.contact-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0073b1; /* Default to LinkedIn blue */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.contact-button i {
+    margin-right: 10px;
+}
+
+.contact-button:hover {
+    background-color: #005582;
+}
+
+.contact-button:nth-child(2) {
+    background-color: #e4405f; /* Instagram color */
+}
+
+.contact-button:nth-child(2):hover {
+    background-color: #b82d48;
+}
+
+.contact-button:nth-child(3) {
+    background-color: #d44638; /* Email color */
+}
+
+.contact-button:nth-child(3):hover {
+    background-color: #a6302b;
+}
     </style>
 </head>
 <body>
   <div class="landing">
-    
-    <div class="venn-diagram">
-      <div class="animation-container">
-        <h2>Rotating Cube</h2>
-        <div class="cube">
-          <div class="face front"></div>
-          <div class="face back"></div>
-          <div class="face left"></div>
-          <div class="face right"></div>
-          <div class="face top"></div>
-          <div class="face bottom"></div>
-        </div>
-      </div>
-      <div class="circle circle1"></div>
-      <div class="circle circle2"></div>
-      <div class="circle circle3"></div>
-      <img class="pic" src="./meA.png"/>
-      <div class="box">
-        <h1 class="title">Micaela Blank</h1>
-        <h1 class="title">Creative Technologist</h1>
+   
+    <nav>
+        <!-- <a href="https://twitter.com/theunknowman_80">Follow Me</a>
+        <span> -->
         
-      </div>
-      
+        <!-- <span><a href="calculator.html">RESUME</a></span> -->
+        <!-- <span><a href="artGallery.html">PAINT</a></span>
+        <span><a href="artGallery.html">PASTWORK </a></span> -->
+        
+        
+        <!-- <span><a id="openPopupBtn">CONTACT</a> </span>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" id="closePopupBtn">&times;</span>
+                <div class="contact-buttons">
+                
+                    <a href="https://www.linkedin.com/in/micaela-blank-1a67b41b0/" target="_blank" class="contact-button">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://instagram.com/theblanksloth?igshid=YmMyMTA2M2Y=" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/your-profile" target="_blank" class="contact-button">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="mailto:micaelablank@gmail.com" class="contact-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div> -->
+
+
+        <a href="indexOld.html">OLDWEBSITE</a>
+        <!-- <a href="creativeCode.html">CREATIVECODE</a> -->
+        <!-- <span class="large-paragraph"  id="large-paragraph" >CREATIVECODE ANIMATE FICHCALULATOR &nbsp;&nbsp;PAINT &nbsp;&nbsp;PASTWORK &nbsp;&nbsp;OLDWEBSITE </span> -->
+        </nav>
+        <!-- <div class="animation-container">
+           -->
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+            <div class="box" ><h2>Micaela Blank</h2><p>Portfolio</p></div>
+       
+            <div class="box">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            </div>
+     
+        <!-- </div> -->
   </div>
   
 </div>
@@ -345,8 +444,10 @@
         <img src="./assets/img/Composition.png" alt="Portfolio Image 3">
         <div class="section-text">
             <h2>Mondrian's Composition</h2>
-            <p>Feeling frustrated with my paintings not being compositionally harmonious enough for me, I looked to the great artists and the fibonacci sequence
-            to "hack" composition.
+            <p>In my art practice, I have developed a unique program that generates compositions based on the Fibonacci sequence, 
+                drawing inspiration from Piet Mondrian's iconic "Composition II in Red, Blue, and Yellow."
+                This program leverages the mathematical harmony of the Fibonacci sequence to create balanced and aesthetically pleasing artworks 
+                that mimic Mondrian's distinctive style.
             </p>
             <div class="pills">
                 <div class="pill">HTML/CSS</div>
@@ -360,5 +461,26 @@
 
 
 </div>
+<script> 
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("popup");
+    const openPopupBtn = document.getElementById("openPopupBtn");
+    const closePopupBtn = document.getElementById("closePopupBtn");
+
+    openPopupBtn.addEventListener("click", () => {
+        popup.style.display = "block";
+    });
+
+    closePopupBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+</script>
 </body>
 </html>

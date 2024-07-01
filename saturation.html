@@ -20,6 +20,8 @@
       align-items: center;
       flex-direction: column;
       position: relative;
+      font-size: 1.2em;
+      line-height: 1.8;
     }
 
   
@@ -34,7 +36,7 @@
   justify-content: center;
   height: 100vh;
   letter-spacing: 1px;
-  line-height:2
+  line-height:2;
 }
 
 h1 {
@@ -49,7 +51,7 @@ h1 {
   margin: 10px 0;
 }
     .container {
-      max-width: 800px;
+      max-width:70vw;
       width: 100%;
       padding: 20px;
       box-sizing: border-box;
@@ -70,12 +72,12 @@ h1 {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      margin-top: 20px;
+      /* margin-top: 20px; */
     }
 
     .text-section, .image-section {
       padding-top: 100px;
-      width: 48%;
+      width: 45%;
       margin: 10px 0;
     }
 
@@ -220,11 +222,18 @@ h1 {
       top: 5%;
       left: 6%;
     }
+    
   </style>
 </head>
 
 <body>
-  <a href="index.html" class="back-button">Back to Home</a>
+  <a href="index.html" class="back-button"> 
+    <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.292893 7.29289C-0.0976311 7.68342 -0.0976311 8.31658 0.292893 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292893 7.29289ZM24 7L1 7V9L24 9V7Z" fill="#E0E0E0"/>
+      </svg>
+      
+      
+  </a>
   <!-- <h2>Saturation</h2> -->
   <div class="title">
 
@@ -233,13 +242,14 @@ h1 {
    </div>
   <div class="background-images">
     <img src="./assets/img/saturation/bony.png" alt="Background Image 4" class="img4">
-    <img src="./assets/img/saturation/image10.jpg" alt="Background Image 1" class="img1">
+    <!-- <img src="./assets/img/saturation/image10.jpg" alt="Background Image 1" class="img1">
     <img src="./assets/img/saturation/city.png" alt="Background Image 2" class="img2">
-    <img src="./assets/img/saturation/rainbowSIn.png" alt="Background Image 3" class="img3">
+    <img src="./assets/img/saturation/rainbowSIn.png" alt="Background Image 3" class="img3"> -->
   </div>
 
   <div class="full-width-image-container">
-    <img src="./assets/img/saturation/image10.jpg" alt="Main Artwork" class="full-width-image">
+    <img src="./assets/img/saturation/Iteration1.gif" alt="Artwork gif" class="full-width-image">
+    <!--  -->
   </div>
 
   <div class="container">
@@ -252,6 +262,7 @@ h1 {
         <p> 
           "Saturation" is an interactive digital art installation that combines creative coding with various tools and technologies, including p5.js, ML5 for skeleton and face tracking, live camera and mic data, Maptastic, Procreate, Photoshop, Premiere Pro, and multiple AI image generation softwares. This piece explores the theme of triggering specific physical reactions, balancing hyper-engagement with overstimulation. It reflects my personal experience in a rapidly advancing world, capturing both amazement and discomfort.
         </p>
+        <a href="https://annual.artdesign.unsw.edu.au/profile/micaela-blank" class="square-link">Annual Website</a>
       </div>
       <div class="image-section">
         <img src="./assets/img/saturation/Iteration2.gif" alt="Artwork Detail 1">
@@ -269,8 +280,15 @@ h1 {
 
       <div class="text-section">
         <br/>
-        <p>The digital mockup of the printed RGB effect. The visuals themselves are intertwined, hand drawn, AI, photoshop tweaked, pen on paper meets ipad with it all being indistinguishable to the audience.
+        <p>These saturated images are created using pure cyan, magenta, and yellow pigments. When these images are overlapped and viewed through contrasting color filters—red, green, and blue—the interaction between the printed colors and the filtered light produces visually striking results.
         </p>
+        <div>TRY IT OUT</div>
+        <div class="color-buttons">
+          <div class="color-button green" onclick="changeColor('green')"></div>
+          <div class="color-button red" onclick="changeColor('red')"></div>
+          <div class="color-button blue" onclick="changeColor('blue')"></div>
+          <div class="color-button white" onclick="changeColor('white')"></div>
+        </div>
       </div>
 
       <div class="image-section">
@@ -279,30 +297,23 @@ h1 {
           <img src="./assets/img/saturation/RGBcrowded.png" alt="Blend Image" class="blend-image">
         </div>
         
-        <div class="color-buttons">
-          <div class="color-button green" onclick="changeColor('green')"></div>
-          <div class="color-button red" onclick="changeColor('red')"></div>
-          <div class="color-button blue" onclick="changeColor('blue')"></div>
-          <div class="color-button white" onclick="changeColor('white')"></div>
-        </div>
+       
 
       </div>
-      
-      <div class="image-section">
-        <img src="./assets/img/saturation/Iteration1.gif" alt="Artwork Detail 3">
-        <a href="https://annual.artdesign.unsw.edu.au/profile/micaela-blank" class="square-link">Annual Website</a>
-      </div>
-      <div class="text-section">
-        <p>Here is a link to the Annual art exhibition page.</p>
-      </div>
-      
-     
-      <!-- <div class="image-section">
-        <img src="https://picsum.photos/500/500?2" alt="Artwork Detail 2">
-      </div> -->
+
     </div>
+    
+      
+    
+    
   </div>
-
+  <div class="full-width-image-container">
+   
+    
+  
+    <img src="./assets/img/saturation/image10.jpg" alt="Main Artwork" class="full-width-image">
+    <!--  -->
+  </div>
   <script>
     function changeColor(color) {
       document.querySelector('.blend-overlay').style.backgroundColor = color;
