@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Gallery</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+<style>
+    /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Basic Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #202020;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #a0c464;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11vw, 1fr));
+    /* gap: 1rem; */
+    gap: 0rem;
+    width: 100%;
+}
+
+/* Grid Items */
+.grid-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+    transition: transform 0.3s, box-shadow 0.3s;
+   
+}
+
+.grid-item img {
+    translate: -80px;
+    height: 80vh;
+    width: auto;
+    display: block;
+   
+    /* border-radius: 8px; */
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    transform: translateY(-50px);
+
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Overlay Effect */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(150, 0, 200, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    mix-blend-mode: difference;
+}
+
+.grid-item:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+.back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #f2f2f2;
+      
+      background-color: #333;
+      text-decoration: none;
+      border: 2px solid #d3d3d340;  
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #555;
+    }
+
+</style>
+</head>
+<body>
+    <a href="index.html" class="back-button">Back to Home</a>
+    <main>
+        <h1 class="title">Animation</h1>
+        <div class="grid-container">
+            <!-- Inserted image links -->
+            <a href="GSdreamAnimation.html" class="grid-item">
+                <img src="assets/img/portfolio_me/bed.png" alt="Animation 1 assignment">
+                <div class="overlay">
+                    <div class="text">Animation 1 assignment</div>
+                </div>
+            </a>
+            <a href="GSedm.html" class="grid-item">
+                <img src="assets/img/portfolio_me/tindrstill.png" alt="Freelance content work">
+                <div class="overlay">
+                    <div class="text">Freelance content work</div>
+                </div>
+            </a>
+            <a href="GStree.html" class="grid-item">
+                <img src="assets/img/portfolio_me/tree.png" alt="Media arts intro 1">
+                <div class="overlay">
+                    <div class="text">Media arts intro 1</div>
+                </div>
+            </a>
+            <a href="GSdan.html" class="grid-item">
+                <img src="assets/img/portfolio_me/dan.png" alt="A birthday present for my Love">
+                <div class="overlay">
+                    <div class="text">A birthday present for my Love</div>
+                </div>
+            </a>
+            <a href="gallery-single.html" class="grid-item">
+                <img src="assets/img/portfolio_me/sun.png" alt="Solely for the act of creating">
+                <div class="overlay">
+                    <div class="text">Solely for the act of creating</div>
+                </div>
+            </a>
+            <a href="GSbrain.html" class="grid-item">
+                <img src="assets/img/portfolio_me/brain.png" alt="My migraine takes form">
+                <div class="overlay">
+                    <div class="text">My migraine takes form</div>
+                </div>
+            </a>
+            <a href="GSvideoDream.html" class="grid-item">
+                <img src="assets/img/portfolio_me/videoEyes.png" alt="Media arts intro 2">
+                <div class="overlay">
+                    <div class="text">Media arts intro 2</div>
+                </div>
+            </a>
+            <a href="gallery-single.html" class="grid-item">
+                <img src="assets/img/portfolio_me/fish.png" alt="My work in progress animation">
+                <div class="overlay">
+                    <div class="text">My work in progress animation</div>
+                </div>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Animation Gallery</p>
+    </footer>
+</body>
+</html>

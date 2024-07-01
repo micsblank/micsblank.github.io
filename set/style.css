@@ -1,0 +1,198 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 2em;
+    color: #444;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#instructions, #found-sets {
+    width: 90%;
+    max-width: 200px;
+    margin: 10px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+#found-sets {
+    max-width: 150px;
+}
+
+#instructions h2, #found-sets h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #555;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-gap: 10px;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.card, .card1 {
+    width: 100%;
+    height: 100px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e3e3e3;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s, opacity 0.3s, background-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.card:hover, .card1:hover {
+    background-color: #d1d1d1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.selected {
+    outline: 3px solid yellow;
+}
+
+.minimized {
+    transform: scale(0);
+    opacity: 0;
+}
+
+button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    background-color: #004494;
+}
+
+#hint-output {
+    font-style: italic;
+    color: #666;
+}
+
+.found-set {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 3px;
+    box-sizing: border-box;
+    cursor: pointer; /* Change cursor to pointer for better interaction */
+}
+
+.found-set.selected {
+    outline: 3px solid red; /* Highlight selected found sets */
+    background-color: yellow;
+}
+
+#canvas-container {
+    /* position: relative; */
+    margin-top: 20px;
+}
+
+#visualCanvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#hover-text {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #f4f4f9;
+    color: #020202;
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#canvas-container:hover #hover-text {
+    opacity: 1;
+}
+
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fc;
+    text-decoration: none;
+    border: 2px solid #d3d3d340;  
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .back-button:hover {
+    background-color: #d3d3d3;
+  }
+
+@media (min-width: 768px) {
+    #container {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #instructions, #found-sets {
+        width: 200px;
+    }
+
+    #game-board {
+        margin: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+}
+

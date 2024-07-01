@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image and Text Alignment Example</title>
+  <link href="./global.css" rel="stylesheet">
+  <style>
+
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      overflow: hidden; /* Clearfix for floated elements */
+      padding: 40px;
+    }
+
+    .image-text-wrapper {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .image-text-wrapper img {
+      max-width: 350px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .image-text-wrapper p {
+      margin: 0;
+      /* padding: 0 10px; */
+    }
+
+    @media (max-width: 768px) {
+      .image-text-wrapper {
+        width: 100%; /* Full width on smaller screens */
+      }
+    }
+    .back-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      background-color: #194021;
+    }
+  </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">Back to Index</a>
+<h1>Past Work</h1>
+<div class="container">
+  <div class="image-text-wrapper">
+    <img src="assets/img/FICHLOGO.png" alt="Fichnramous logo">
+  </div>
+  <div class="image-text-wrapper">
+    <h2>Content creator</h2>
+    <h4>FICHNRAMOUS</h4>
+    <p>I was responsible for conceptualizing and producing a variety of engaging visual elements, including animations, assets, and hand-drawn designs, to enrich the marketing materials for clients of Fichnramous. </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="image-text-wrapper">
+    <h2>Frontend engineer</h2>
+    <h4>Kopi Su</h4>
+    <p>I collaborated on the frontend implementation of a website that harnesses AI technology to dynamically generate soothing lofi music, seamlessly integrating it into the background of lectures as part of a promotional campaign for the globally renown gum company, Extra.</p>
+  </div>
+  <div class="image-text-wrapper">
+    <img src="./assets/img/Kopi SU.png" alt="Kopi Su Logo">
+  </div>
+</div>
+
+<div class="container">
+    <div class="image-text-wrapper">
+      <img src="assets/img/DARC.png" alt="Fichnramous logo">
+    </div>
+    <div class="image-text-wrapper">
+      <h2>Web design and developer</h2>
+      <h4>DARC</h4>
+      <p>I collaborated closely with the owner of a luxury architecture studio to conceptualize, design, and develop a bespoke portfolio website tailored specifically to showcase their exceptional work to high-end clientele. </p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="image-text-wrapper">
+      <h2>AI, art and frontend consultant</h2>
+      <h4>Innersteps</h4>
+      <p>As a consultant for Inner Steps, I work closely with the founders to assess AI-generated visuals for their personalized children's story app. My role involves advising on AI strategies, art direction, and frontend implementations to ensure efficacy, ethics, and efficiency. By combining strategic guidance with hands-on contributions, we aim to create a seamless and ethically sound storytelling experience for young audiences.</p>
+    </div>
+    <div class="image-text-wrapper">
+      <img src="./assets/img/innersteps.png" alt="Kopi Su Logo">
+    </div>
+  </div>
+
+</body>
+</html>

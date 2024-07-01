@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artwork Price Calculator</title>
+  <style>
+    body {
+      /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+      background-color: #f0f2f5;
+      padding: 40px;
+      text-align: center;
+      font-family: monaco, Consolas, "Lucida Console", monospace; 
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+     
+      display: inline-block; /* Display as inline-block */
+      vertical-align: middle; /* Align vertically with the logo */
+      margin: 0;
+    }
+
+    .logo {
+      width: 80px;
+      display: inline-block; /* Display as inline-block */
+      vertical-align: middle; /* Align vertically with the text */
+      margin-right: 10px; /* Add some margin for spacing */
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    h4 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    .input-group input,
+    .input-group select {
+      flex: 2;
+    }
+
+    input[type="range"] {
+      flex: 2;
+      margin: 0;
+    }
+
+    .slider-value {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .error-message {
+      color: #ff0000; /* Red color for errors */
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .slider-value {
+      display: inline-block;
+      background-color: #4caf50; /* Matching button color for consistency */
+      color: #fff; /* White text for contrast */
+      padding: 4px 8px;
+      font-size: 18px; /* Larger font size */
+      border-radius: 4px; /* Rounded corners */
+      margin-top: 5px; /* Space above the slider value display */
+      font-weight: bold; /* Optional: Making the number bold */
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #333;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #f8f9fc;
+      text-decoration: none;
+      border: 2px solid #d3d3d340;  
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #d3d3d3;
+    }
+
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-button">Back to Home</a>
+<div class="container">
+  
+  <br/>
+  <img src="assets/img/FICHLOGO.png" class="logo"/>
+  <h1> Fich's Artwork Price Calculator</h1>
+  <h4>To my talented sister, you are not allowed to undersell yourself.
+  </h4>
+  <br/>
+  <div class="input-group">
+    <label for="width">Width (cm):</label>
+    <input type="number" id="width" placeholder="Width in cm">
+  </div>
+
+  <div class="input-group">
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" placeholder="Height in cm">
+  </div>
+  <div id="sliderValueDisplay" class="slider-value">Material Cost: <span id="materialCostValue">500</span> </div>
+  
+  
+  <div class="input-group">
+    <label for="aspect1">Material cost:</label>
+    <input type="range" id="aspect1" min="0" max="1000" value="500" step="1" oninput="updateSliderValue(value)">
+    <!-- Displayed value -->
+  </div>
+ 
+
+
+  <div class="input-group">
+    <label for="aspect2">Time:</label><br>
+    <input type="radio" id="low_time" name="time" value="0.9">
+    <label for="low_time">Low</label><br>
+    <input type="radio" id="medium_time" name="time" value="1">
+    <label for="medium_time">Medium</label><br>
+    <input type="radio" id="high_time" name="time" value="1.1">
+    <label for="high_time">High</label>
+  </div>
+  
+  <div class="input-group">
+    <label for="aspect3">Sentimentality:</label><br>
+    <input type="radio" id="low_sentiment" name="sentimentality" value="0.9">
+    <label for="low_sentiment">Low</label><br>
+    <input type="radio" id="medium_sentiment" name="sentimentality" value="1">
+    <label for="medium_sentiment">Medium</label><br>
+    <input type="radio" id="high_sentiment" name="sentimentality" value="1.1">
+    <label for="high_sentiment">High</label>
+  </div>
+  
+  <div class="input-group">
+    <label for="aspect4">Complexity:</label><br>
+    <input type="radio" id="low_complexity" name="complexity" value="0.9">
+    <label for="low_complexity">Low</label><br>
+    <input type="radio" id="medium_complexity" name="complexity" value="1">
+    <label for="medium_complexity">Medium</label><br>
+    <input type="radio" id="high_complexity" name="complexity" value="1.1">
+    <label for="high_complexity">High</label>
+  </div>
+
+   <button onclick="calculatePrice()">Calculate</button>
+
+  <p id="output"></p>
+  <p id="error-message" class="error-message"></p> <!-- Error message container -->
+  
+  <script>
+     function updateSliderValue(value) {
+      document.getElementById('materialCostValue').textContent = value; // Ensures the value updates dynamically
+    }
+
+    function calculatePrice() {
+    var aspect1 = parseFloat(document.getElementById('aspect1').value);
+
+    // Get the value of the selected radio button for time
+    var timeInputs = document.getElementsByName('time');
+    var aspect2 = 1; // Default value if none is selected
+    timeInputs.forEach(function(input) {
+      if (input.checked) {
+        aspect2 = parseFloat(input.value);
+      }
+    });
+
+    // Get the value of the selected radio button for sentimentality
+    var sentimentInputs = document.getElementsByName('sentimentality');
+    var aspect3 = 1; // Default value if none is selected
+    sentimentInputs.forEach(function(input) {
+      if (input.checked) {
+        aspect3 = parseFloat(input.value);
+      }
+    });
+
+    // Get the value of the selected radio button for complexity
+    var complexityInputs = document.getElementsByName('complexity');
+    var aspect4 = 1; // Default value if none is selected
+    complexityInputs.forEach(function(input) {
+      if (input.checked) {
+        aspect4 = parseFloat(input.value);
+      }
+    });
+
+    var width = parseFloat(document.getElementById('width').value);
+    var height = parseFloat(document.getElementById('height').value);
+
+    // Check if width and height are not NaN (i.e., they have been entered)
+    if (isNaN(width) || isNaN(height)) {
+      document.getElementById('output').innerHTML = ""; // Clear any previous result
+      document.getElementById('error-message').innerHTML = "Please enter both width and height.";
+      return; // Exit the function early
+    }
+
+    // If width and height are provided, clear the error message
+    document.getElementById('error-message').innerHTML = "";
+    var variability = (aspect2 + aspect3 + aspect4)/3;
+    console.log(variability, aspect4, aspect2, aspect3);
+    var area = width * height;
+    var price = 40 * Math.sqrt(area) *variability + aspect1; // Example calculation using the slider value
+    document.getElementById('output').innerHTML = "Suggested price: $" + price.toFixed(2);
+  }
+    </script>
+    <br/>
+    <h2>My working<h2>
+    <h4>By collecting the price and square area of Fich's artworks from a previous exhibition and graphing the data as coordinates I was able to figure out the rough equation for her pricing. 
+      Although I know as an artist there are more elements which may cause the price to vary so I experimented with other attributes such as excess material, time and sentimentality so there is still place for emotional influence.
+
+    </h4>
+
+    <img src="assets/img/talia_art_graph_money_plotter.png" width="500px"/>
+</body>
+</html>

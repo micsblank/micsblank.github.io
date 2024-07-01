@@ -542,7 +542,11 @@ if (reversed == null) { reversed = false; }
 		this.button_1.addEventListener("click", fl_ClickToGoToWebPage);
 		
 		function fl_ClickToGoToWebPage() {
-			window.open("http://sites.artdesign.unsw.edu.au/~z5312842/final/stage3.html", "_blank");
+			var currentURL = window.location.href;
+			
+			var newURL = currentURL.replace(/animate3\/fred3\.html/, "stage3.html");
+			window.location.href = newURL;
+			//window.open("http://sites.artdesign.unsw.edu.au/~z5312842/final/stage3.html", "_blank");
 		}
 	}
 

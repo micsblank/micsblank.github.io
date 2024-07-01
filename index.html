@@ -1,153 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-  <title>PhotoFolio Bootstrap Template - Index</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <style>
+        body {
+            margin: 0;
+            /* font-family: 'Montserrat', sans-serif; */
+            font-family: monaco, Consolas, "Lucida Console", monospace;
+            background-color: #020202;
+            
+        }
+        nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40vw;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-around;
+        background-color: rgba(0, 0, 0, 0.15)
+        }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+        nav a, span {
+        text-decoration: none;
+        color: #ccff55;
+        font-size: 14px;
+        text-transform: uppercase;
+        }
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        nav :hover {
+            cursor: pointer;
+            color: #36c37a;
+        }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  
+        .landing {
+            height: 110vh;
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+        a {
+            text-decoration: none;
+        }
 
-  <!-- =======================================================
-  * Template Name: PhotoFolio
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        h1 {
+            font-size: 4em;
+            margin: 0;
+        }
+
+        .sections {
+            padding-top: 5em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section {
+            width: 100%;
+            padding: 5em 0;
+            background: #020202;
+            color: #f2f2f2;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .sections :hover {
+            background-color: rgb(13, 5, 53);
+            cursor: pointer;
+          
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .section img {
+            width: 50%;
+        }
+
+        .section-text {
+            margin-left: 5em;
+            margin-right: 5em;
+            width: 40%;
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 1em;
+        }
+
+        .pill {
+            color: white;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+
+        .pill:nth-child(3n) {
+            background-color: #6a11cb;
+        }
+
+        .pill:nth-child(3n+1) {
+            background-color: #2575fc;
+        }
+
+        .pill:nth-child(3n+2) {
+            background-color: #ff4081;
+        }
+
+        .animation-container {
+            width: 100vw;
+            display: flex;
+            flex-direction: row;
+             justify-content:center;
+            /* padding: 100px;  */
+        }
+
+        .circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            opacity: 0.7;
+            filter: blur(10px);
+            z-index: 0;
+            color: black;
+        }
+
+        .circle1 {
+            background-color: rgb(240, 102, 102);
+            translate: -50px 150px;
+            /* left: 450px;
+            top: 275px; */
+            mix-blend-mode: screen;
+            animation: pulse2 2s ease 0.5s infinite;
+        }
+
+        .circle2 {
+            background-color: rgb(151, 151, 243);
+            translate: 50px;
+            /* left: 500px;
+            top: 275px; */
+            mix-blend-mode: screen;
+            animation: pulse2 2s ease 1s infinite;
+        }
+
+        .circle3 {
+            background-color: rgb(128, 253, 128);
+            translate: 0px -75px;
+            /* left: 475px;
+            top: 350px; */
+            mix-blend-mode: screen;
+            animation: pulse2 2s ease 0s infinite;
+        }
+
+        .box {
+            margin-left: 200px;
+            /* margin-right: 100px; */
+            font-size: 1.4em;
+        }
+
+        .title {
+            left: 20px;
+        }
+
+        @keyframes pulse2 {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateCube 5s infinite linear;
+          
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid #61dafb;
+            box-sizing: border-box;
+        }
+
+        .front { transform: translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+        .back { transform: rotateY(180deg) translateZ(50px); background: rgba(97, 218, 251, 0.7);}
+        .left { transform: rotateY(-90deg) translateZ(50px); background: rgba(251, 97, 202, 0.7); }
+        .right { transform: rotateY(90deg) translateZ(50px); background: rgba(251, 97, 202, 0.7); }
+        .top { transform: rotateX(90deg) translateZ(50px); background: rgba(241, 251, 97, 0.7);}
+        .bottom { transform: rotateX(-90deg) translateZ(50px); background: rgba(241, 251, 97, 0.7);}
+
+        @keyframes rotateCube {
+            from {
+                transform: rotateX(0) rotateY(0);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        .popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    color:black;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contact-buttons {
+    margin-top: 20px;
+}
+
+.contact-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0073b1; /* Default to LinkedIn blue */
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.contact-button i {
+    margin-right: 10px;
+}
+
+.contact-button:hover {
+    background-color: #005582;
+}
+
+.contact-button:nth-child(2) {
+    background-color: #e4405f; /* Instagram color */
+}
+
+.contact-button:nth-child(2):hover {
+    background-color: #b82d48;
+}
+
+.contact-button:nth-child(3) {
+    background-color: #d44638; /* Email color */
+}
+
+.contact-button:nth-child(3):hover {
+    background-color: #a6302b;
+}
+    </style>
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
-      
-        <img src="assets/img/avatar.png" class=""/>
-        <h5>Micaela Blank</h5>
+  <div class="landing">
+   
+    <nav>
+        <!-- <a href="https://twitter.com/theunknowman_80">Follow Me</a>
+        <span> -->
         
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="galleryAnimate.html">Animation/Video art</a></li>
-              <li><a href="galleryCode.html">Web design/Code</a></li>
-              <li><a href="galleryPaint.html">Physical Art</a></li>
-            </ul>
-          </li>
-        </ul>
-      </nav><!-- .navbar -->
-
-      <div class="header-social-links">
-        <a href="https://instagram.com/theblanksloth?igshid=YmMyMTA2M2Y=" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/micaela-blank-1a67b41b0/" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header>
-  <!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <!-- <section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6 text-center">
-          <h2>I'm <span>Jenny Wilson</span> a Professional Photographer from New York City</h2>
-          <p>Blanditiis praesentium aliquam illum tempore incidunt debitis dolorem magni est deserunt sed qui libero. Qui voluptas amet.</p>
-          <a href="contact.html" class="btn-get-started">Available for hire</a>
-        </div>
-      </div>
-    </div> -->
-    <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.png )">
-    
-      <div class="overlay-itro"></div>
-      <div class="hero-content display-table">
-        <div class="table-cell">
-          <div class="container">
-            
-            <!--<p class="display-6 color-d">Hello, world!</p>-->
-            <!-- <h1 class="hero-title mb-4">I am  Freeman</h1> -->
-            <div class="introContainer">
+        <!-- <span><a href="calculator.html">RESUME</a></span> -->
+        <!-- <span><a href="artGallery.html">PAINT</a></span>
+        <span><a href="artGallery.html">PASTWORK </a></span> -->
         
-              <a href="galleryCode.html"> <img src="assets/img/intro/code.png"/> </a>
-              <a href="galleryPaint.html"><img src="assets/img/intro/paint.png"/> </a>
-              <a href="galleryAnimate.html"><img src="assets/img/intro/animate.png"/> </a>
+        
+        <!-- <span><a id="openPopupBtn">CONTACT</a> </span>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close-btn" id="closePopupBtn">&times;</span>
+                <div class="contact-buttons">
+                
+                    <a href="https://www.linkedin.com/in/micaela-blank-1a67b41b0/" target="_blank" class="contact-button">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://instagram.com/theblanksloth?igshid=YmMyMTA2M2Y=" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/your-profile" target="_blank" class="contact-button">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="mailto:micaelablank@gmail.com" class="contact-button">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
             </div>
-            <!-- <img class="avatar" src="assets/img/avatar.png" alt="..." /> -->
-            
-            <!-- <p class="hero-subtitle"><span class="typed" data-typed-items="UX, UI, Computer Science, Frontend, Digital Designer, Freelancer"></span></p> -->
-            
-            <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
-          </div>
-        </div>
-      </div>
-    </div> 
-  </section><!-- End Hero Section -->
+        </div> -->
 
+
+        <a href="indexOld.html">OLDWEBSITE</a>
+        <!-- <a href="creativeCode.html">CREATIVECODE</a> -->
+        <!-- <span class="large-paragraph"  id="large-paragraph" >CREATIVECODE ANIMATE FICHCALULATOR &nbsp;&nbsp;PAINT &nbsp;&nbsp;PASTWORK &nbsp;&nbsp;OLDWEBSITE </span> -->
+        </nav>
+        <!-- <div class="animation-container">
+           -->
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face left"></div>
+                <div class="face right"></div>
+                <div class="face top"></div>
+                <div class="face bottom"></div>
+            </div>
+            <div class="box" ><h2>Micaela Blank</h2><p>Portfolio</p></div>
+       
+            <div class="box">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            </div>
+     
+        <!-- </div> -->
+  </div>
   
-  <!-- End #main -->
+</div>
+<div class="sections">
+ 
+    <div class="section" onclick="window.location.href='./saturation.html'" >
+        <img src="./assets/img/saturation/image10.jpg" alt="Portfolio Image 1">
+        <div class="section-text">
+            <h2>Saturation</h2>
+            <p>Saturation is an interactive art installation, exhibited at the UNSW 2023 Annual Exhibiton. Utilising a wide array of creative technologies across animation, programming and AI software, "Saturation" was made to capture the specific feelings being in awe and overwhelmed with technology. 
+              We have access to more colours, storytelling, people and information than ever before. Our attention is locked in a flurry of pixels and sounds which keep us entertained and over-stimulated. There are elements which speak to human vanity, sensory overload, the illusion of control and total immersion within a space. 
+            </p>
+            <div class="pills">
+                <div class="pill">Interactive Installation</div>
+                <div class="pill">CGI from Camera input</div>
+                <div class="pill">JavaScript</div>
+                <div class="pill">Machine Learning Body tracking</div>
+                <div class="pill">AI</div>
+            </div>
+        </div>
+    </div>
+  
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
+    <div class="section" onclick="window.location.href='https://www.youtube.com/watch?v=DQghuavrfYg'">
+        <img src="./assets/img/Extra_lofi.png" alt="Portfolio Image 2">
+        <div class="section-text">
+            <h2>T&Pm Extra Lecture Lounge</h2>
+            <p>Working with Kopi Su, a creative digital studio, I lead the development of the Extra Chewing gum AI lecture lounge website. This is an AI lofi music generator made to add light, adaptable music to the backgrounds of lectures to increase focus, retention and productivity for neurodiverse students.</p>
+            <div class="pills">
+                <div class="pill">React</div>
+                <div class="pill">Tailwind</div>
+                <div class="pill">Figma</div>
+            </div>
+        </div>
+    </div>
+ 
+
+ 
+    <div class="section" onclick="window.location.href='./calculator.html'">
+        <img src="./assets/img/talia_art_graph_money_plotter.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Fich Calculator</h2>
+            <p>My dear talented sister had a problem with how to value her artwork, an issue many artists have. I plotted, graphed and created a calculator that removes the guess work.</p>
+            <div class="pills">
+                <div class="pill">Graphing</div>
+                <div class="pill">HTML/CSS</div>
+                <div class="pill">Javascript</div>
+            </div>
+        </div>
+    </div>
+
+
+   
+    <div class="section" onclick="window.location.href='./set/index.html'">
+      <img src="./assets/img/setFull.png" alt="Portfolio Image 3">
+      <div class="section-text">
+          <h2>Set the Card Game (for colour theory nerds)</h2>
+          <p>I recreated the game that I dominate at game night with my family so that my sister's boyfriend can practice without me as he lives overseas. 
+            I then went a step further and altered the game because I am a colour theory nerd.</p>
+          <div class="pills">
+              <div class="pill">HTML/CSS</div>
+              <div class="pill">Javascript</div>
+              <div class="pill">Colour Theory</div>
+          </div>
       </div>
     </div>
-  </footer><!-- End Footer -->
+    
+    <div class="section"  onclick="window.location.href='./assets/portfolio_attempt/portfolio webversion /Astart.html'">
+        <img src="./assets/img/space.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Levels of Consciousness</h2>
+            <p>My first creative coding project. What is consciousness? How did minds as complex as ours develop? What would those steps look like? All of these questions reimagined in an interactive narrative made for the web. 
+            </p>
+            <div class="pills">
+                <div class="pill">Adobe animate</div>
+                <div class="pill">Html</div>
+                <div class="pill">Procreate</div>
+            </div>
+        </div>
+    </div>
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader">
-    <div class="line"></div>
-  </div>
+    <div class="section" onclick="window.location.href='./composition.html'">
+        <img src="./assets/img/Composition.png" alt="Portfolio Image 3">
+        <div class="section-text">
+            <h2>Mondrian's Composition</h2>
+            <p>In my art practice, I have developed a unique program that generates compositions based on the Fibonacci sequence, 
+                drawing inspiration from Piet Mondrian's iconic "Composition II in Red, Blue, and Yellow."
+                This program leverages the mathematical harmony of the Fibonacci sequence to create balanced and aesthetically pleasing artworks 
+                that mimic Mondrian's distinctive style.
+            </p>
+            <div class="pills">
+                <div class="pill">HTML/CSS</div>
+                <div class="pill">Javascript</div>
+                <div class="pill">Colour Theory</div>
+            </div>
+        </div>
+    </div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
 
+
+</div>
+<script> 
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("popup");
+    const openPopupBtn = document.getElementById("openPopupBtn");
+    const closePopupBtn = document.getElementById("closePopupBtn");
+
+    openPopupBtn.addEventListener("click", () => {
+        popup.style.display = "block";
+    });
+
+    closePopupBtn.addEventListener("click", () => {
+        popup.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target == popup) {
+            popup.style.display = "none";
+        }
+    });
+});
+</script>
 </body>
-
 </html>

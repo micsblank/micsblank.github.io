@@ -29,6 +29,7 @@ function init() {
 	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
 	var lib=comp.getLibrary();
 	loader.loadManifest(lib.properties.manifest);
+	
 }
 function handleFileLoad(evt, comp) {
 	var images=comp.getImages();	
@@ -45,9 +46,13 @@ function handleComplete(evt,comp) {
 	}
 	exportRoot = new lib.RECOVER_Untitled4();
 	stage = new lib.Stage(canvas);
-	stage.enableMouseOver();	
+	
+	//problem
+	//stage.enableMouseOver();
+		
 	//Registers the "tick" event listener.
 	fnStartAnimation = function() {
+		
 		stage.addChild(exportRoot);
 		createjs.Ticker.framerate = lib.properties.fps;
 		createjs.Ticker.addEventListener("tick", stage);
@@ -56,13 +61,14 @@ function handleComplete(evt,comp) {
 	AdobeAn.makeResponsive(true,'both',true,1,[canvas,anim_container,dom_overlay_container]);	
 	AdobeAn.compositionLoaded(lib.properties.id);
 	fnStartAnimation();
+	
 }
 function playSound(id, loop, offset) {
 	return createjs.Sound.play(id, {'interrupt':createjs.Sound.INTERRUPT_EARLY, 'loop': loop, 'offset': offset});}
 </script>
 <!-- write your code here -->
 </head>
-<body onload="init();" style="margin:0px;">
+<body onload="init();" style="margin:0px; background-color: rgba(110, 136, 149, 1)">
 	<div id="animation_container" style="background-color:rgba(111, 136, 149, 1.00); width:1920px; height:1080px">
 		<canvas id="canvas" width="1920" height="1080" style="position: absolute; display: block; background-color:rgba(111, 136, 149, 1.00);"></canvas>
 		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1920px; height:1080px; position: absolute; left: 0px; top: 0px; display: block;">
