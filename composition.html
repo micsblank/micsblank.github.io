@@ -4,107 +4,430 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Abstract Artwork with Advanced Color Picker</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/> <!-- 'classic' theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/> <!-- 'nano' theme for sleeker look -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
     <style>
-        body {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            background: #282c34;
-            color: white;
-            font-family: Arial, sans-serif;
+        :root {
+            --bg-color: #1a1a2e;
+            --card-bg: #16213e;
+            --accent-color: #0f3460;
+            --text-color: #e7e7e7;
+            --border-radius: 12px;
+            --spacing: 24px;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: var(--spacing);
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing);
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 16px;
+            font-size: 14px;
+            color: var(--text-color);
+            background-color: var(--accent-color);
+            text-decoration: none;
+            border: none;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-button:hover {
+            background-color: #1a4b8c;
+            transform: translateY(-2px);
+        }
+
+        .panel {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-color);
         }
 
         #controls {
-            margin-right: 20px;
-        }
-
-        #colorPickers {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        #canvasContainer {
-            flex-grow: 1;
+            flex-direction: column;
+            gap: var(--spacing);
         }
 
         #explanation {
-            margin-top: 90px;
-            max-width: 400px;
+            margin-bottom: 20px;
         }
 
-    .back-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      color: #333;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      background-color: #f8f9fc;
-      text-decoration: none;
-      border: 2px solid #d3d3d340;  
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
+        #explanation h2 {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+            background: linear-gradient(90deg, #e0fbfc, #98c1d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .back-button:hover {
-      background-color: #d3d3d3;
-    }
+        #explanation p {
+            line-height: 1.6;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        #colorPickers {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .color-picker-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .color-picker {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .dimension-group {
+            margin-bottom: 16px;
+        }
+
+        .dimension-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dimension-slider {
+            flex-grow: 1;
+        }
+
+        .dimension-input {
+            width: 70px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            background: #2c3e50;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #3d5a80;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            background: #98c1d9;
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #3d5a80;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            background: #98c1d9;
+        }
+
+        input[type="number"] {
+            padding: 8px 10px;
+            border-radius: 8px;
+            background-color: #2c3e50;
+            color: var(--text-color);
+            border: 1px solid #3d5a80;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #98c1d9;
+        }
+
+        /* Remove spinner buttons from number inputs */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3d5a80, #0f3460);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #4d6a90, #1f4470);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        #canvasContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            min-height: 600px;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .pickr {
+            width: 100%;
+        }
+
+        .pickr button {
+            width: 100%;
+            height: 36px;
+            border-radius: 8px;
+        }
+
+        .canvas-dimensions {
+            font-size: 0.85rem;
+            color: #98c1d9;
+            text-align: center;
+            margin-top: 8px;
+        }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">Back to Home</a>
-    <div id="controls">
-
-        <div id="explanation">
-            <h2>Composition for dummies</h2>
-            <p>
-                Inspired by fibonacci, Mondrian's Composition II and motivated by my artworks looking not quite right, I created this composition generator. 
-                Pick your colours and click reload until you see a layout that scratches your brain. Mirror the composition for your artwork and now you have good harmony without all of the guesswork.
-            </p>
+    <!-- <a href="index.html" class="back-button">← Back to Home</a> -->
+    
+    <div class="container">
+        <div id="controls" class="panel">
+            <div id="explanation">
+                <h2>Composition for dummies</h2>
+                <p>
+                    Inspired by fibonacci, Mondrian's Composition II and motivated by my artworks looking not quite right, I created this composition generator. 
+                    Pick your colours and click reload until you see a layout that scratches your brain. Mirror the composition for your artwork and now you have good harmony without all of the guesswork.
+                </p>
+            </div>
+            
+            <div class="panel-title">Color Palette</div>
+            <div id="colorPickers">
+                <div class="color-picker-wrapper">
+                    <div class="color-picker-label">Color 1</div>
+                    <div class="color-picker" id="color-picker-1"></div>
+                </div>
+                <div class="color-picker-wrapper">
+                    <div class="color-picker-label">Color 2</div>
+                    <div class="color-picker" id="color-picker-2"></div>
+                </div>
+                <div class="color-picker-wrapper">
+                    <div class="color-picker-label">Color 3</div>
+                    <div class="color-picker" id="color-picker-3"></div>
+                </div>
+                <div class="color-picker-wrapper">
+                    <div class="color-picker-label">Color 4</div>
+                    <div class="color-picker" id="color-picker-4"></div>
+                </div>
+            </div>
+            
+            <div class="panel-title">Canvas Size</div>
+            <div class="form-group">
+                <div class="dimension-group">
+                    <label for="canvasWidth">Width</label>
+                    <div class="dimension-controls">
+                        <input type="range" id="widthSlider" class="dimension-slider" min="300" max="1200" step="10" value="600">
+                        <input type="number" id="widthInput" class="dimension-input" min="300" max="1200" value="600">
+                    </div>
+                </div>
+                
+                <div class="dimension-group">
+                    <label for="canvasHeight">Height</label>
+                    <div class="dimension-controls">
+                        <input type="range" id="heightSlider" class="dimension-slider" min="300" max="1200" step="10" value="600">
+                        <input type="number" id="heightInput" class="dimension-input" min="300" max="1200" value="600">
+                    </div>
+                </div>
+                
+                <div class="canvas-dimensions">Current size: 600 × 600</div>
+            </div>
+            
+            <button id="reloadButton">Generate New Composition</button>
         </div>
-        <div id="colorPickers">
-            <div class="color-picker" id="color-picker-1"></div>
-            <div class="color-picker" id="color-picker-2"></div>
-            <div class="color-picker" id="color-picker-3"></div>
-            <div class="color-picker" id="color-picker-4"></div>
-        </div>
-        <br>
-        <label for="canvasSize">Select Canvas Size: </label>
-        <select id="canvasSize">
-            <option value="600x600">600x600</option>
-            <option value="800x600">800x600</option>
-            <option value="600x800">600x800</option>
-            <option value="800x800">800x800</option>
-        </select>
-        <br><br>
-        <button id="reloadButton">Reload Composition</button>
         
+        <div id="canvasContainer"></div>
     </div>
-    <div id="canvasContainer"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script>
-        let colors = ['#FF5733', '#3498DB', '#F1C40F', "#fff"];
+        let colors = ['#FF5733', '#3498DB', '#F1C40F', "#FFFFFF"];
         let canvasWidth = 600;
         let canvasHeight = 600;
         let count = 0;
+        let p5Canvas;
+
+        // DOM elements
+        const widthSlider = document.getElementById('widthSlider');
+        const heightSlider = document.getElementById('heightSlider');
+        const widthInput = document.getElementById('widthInput');
+        const heightInput = document.getElementById('heightInput');
+        const dimensionsDisplay = document.querySelector('.canvas-dimensions');
+        const reloadButton = document.getElementById('reloadButton');
 
         function setup() {
-            let canvas = createCanvas(canvasWidth, canvasHeight);
-            canvas.parent('canvasContainer');
+            p5Canvas = createCanvas(canvasWidth, canvasHeight);
+            p5Canvas.parent('canvasContainer');
             background(255);
             drawComposition(0, 0, width, height);
 
-            document.getElementById('reloadButton').addEventListener('click', reloadComposition);
-            document.getElementById('canvasSize').addEventListener('change', changeCanvasSize);
+            // Set up event listeners
+            reloadButton.addEventListener('click', reloadComposition);
+            
+            // Width slider and input
+            widthSlider.addEventListener('input', updateWidthFromSlider);
+            widthInput.addEventListener('change', updateWidthFromInput);
+            
+            // Height slider and input
+            heightSlider.addEventListener('input', updateHeightFromSlider);
+            heightInput.addEventListener('change', updateHeightFromInput);
+            
             count = 0;
             initializeColorPickers();
+            updateDimensionsDisplay();
+        }
+
+        function updateWidthFromSlider() {
+            const newWidth = parseInt(widthSlider.value);
+            widthInput.value = newWidth;
+            canvasWidth = newWidth;
+            updateDimensionsDisplay();
+            resizeAndRedraw();
+        }
+
+        function updateHeightFromSlider() {
+            const newHeight = parseInt(heightSlider.value);
+            heightInput.value = newHeight;
+            canvasHeight = newHeight;
+            updateDimensionsDisplay();
+            resizeAndRedraw();
+        }
+
+        function updateWidthFromInput() {
+            let newWidth = parseInt(widthInput.value);
+            
+            // Ensure value is within bounds
+            if (newWidth < 300) newWidth = 300;
+            if (newWidth > 1200) newWidth = 1200;
+            
+            widthInput.value = newWidth;
+            widthSlider.value = newWidth;
+            canvasWidth = newWidth;
+            updateDimensionsDisplay();
+            resizeAndRedraw();
+        }
+
+        function updateHeightFromInput() {
+            let newHeight = parseInt(heightInput.value);
+            
+            // Ensure value is within bounds
+            if (newHeight < 300) newHeight = 300;
+            if (newHeight > 1200) newHeight = 1200;
+            
+            heightInput.value = newHeight;
+            heightSlider.value = newHeight;
+            canvasHeight = newHeight;
+            updateDimensionsDisplay();
+            resizeAndRedraw();
+        }
+
+        function updateDimensionsDisplay() {
+            dimensionsDisplay.textContent = `Current size: ${canvasWidth} × ${canvasHeight}`;
+        }
+
+        function resizeAndRedraw() {
+            resizeCanvas(canvasWidth, canvasHeight);
+            reloadComposition();
         }
 
         function drawComposition(x, y, w, h) {
@@ -139,67 +462,81 @@
             drawComposition(0, 0, width, height); // Redraw the composition
         }
 
-        function changeCanvasSize() {
-            let size = document.getElementById('canvasSize').value.split('x');
-            canvasWidth = parseInt(size[0]);
-            canvasHeight = parseInt(size[1]);
-            resizeCanvas(canvasWidth, canvasHeight);
-            reloadComposition();
-        }
-
         function initializeColorPickers() {
             const pickrOptions = {
-                theme: 'classic', // or 'monolith', or 'nano'
-                default: '#FF5733',
-
+                theme: 'nano', // Using nano theme for sleeker look
+                lockOpacity: false,
+                defaultRepresentation: 'HEXA',
+                swatches: [
+                    '#FF5733',
+                    '#3498DB',
+                    '#F1C40F',
+                    '#FFFFFF',
+                    '#2ECC71',
+                    '#9B59B6',
+                    '#1ABC9C',
+                    '#E74C3C'
+                ],
                 components: {
-                    // Main components
                     preview: true,
                     opacity: true,
                     hue: true,
-
-                    // Input / output Options
                     interaction: {
                         hex: true,
                         rgba: true,
                         hsla: true,
-                        hsva: true,
-                        cmyk: true,
+                        hsva: false,
+                        cmyk: false,
                         input: true,
-                        clear: true,
+                        clear: false,
                         save: true
                     }
                 }
             };
 
+            // Initialize each color picker with its current color
             const pickr1 = Pickr.create({
                 ...pickrOptions,
-                el: '#color-picker-1'
-            }).on('save', color => {
+                el: '#color-picker-1',
+                default: colors[0]
+            }).on('save', (color, instance) => {
                 colors[0] = color.toHEXA().toString();
+                instance.hide();
             });
 
             const pickr2 = Pickr.create({
                 ...pickrOptions,
-                el: '#color-picker-2'
-            }).on('save', color => {
+                el: '#color-picker-2',
+                default: colors[1]
+            }).on('save', (color, instance) => {
                 colors[1] = color.toHEXA().toString();
+                instance.hide();
             });
 
             const pickr3 = Pickr.create({
                 ...pickrOptions,
-                el: '#color-picker-3'
-            }).on('save', color => {
+                el: '#color-picker-3',
+                default: colors[2]
+            }).on('save', (color, instance) => {
                 colors[2] = color.toHEXA().toString();
+                instance.hide();
             });
 
             const pickr4 = Pickr.create({
                 ...pickrOptions,
-                el: '#color-picker-4'
-            }).on('save', color => {
+                el: '#color-picker-4',
+                default: colors[3]
+            }).on('save', (color, instance) => {
                 colors[3] = color.toHEXA().toString();
+                instance.hide();
             });
         }
+
+        // Initialize p5.js
+        new p5(function(p) {
+            p.setup = setup;
+            p.draw = function() {};
+        });
     </script>
 </body>
 </html>
